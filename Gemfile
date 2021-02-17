@@ -71,3 +71,4 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'jp_prefecture'
 
 gem 'kaminari', '~> 0.17.0'
+gem 'devise'
