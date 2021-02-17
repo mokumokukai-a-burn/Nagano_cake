@@ -1,0 +1,8 @@
+<%= attachment_image_tag @priduct, :image_id, size: "220x170",  fallback: "cake.jpg" %><br>
+<p><%= @product.name %></p>
+<p>¥<%= @product.price %>（税込）</p>
+<%= form_for @product, url: public_cart_items_path(@product) do |f| %>
+<%= f.select :name, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5]], {:prompt => "個数選択"} %></p>
+<%= f.submit "カートに入れる" %>
+<% end %>
+
