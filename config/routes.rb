@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
   namespace :admin do
@@ -20,10 +21,14 @@ Rails.application.routes.draw do
       registrations: 'public/customers/registrations',
       passwords: 'public/customers/passwords'
     }
+    resources :genres
     resources :cart_items
     resources :products, only:[:index, :show]
     resources :customers, only: [:show, :edit, :update, :unsubscrive, :withdraw]
   end
+  
+  
+  
 
 
 end
