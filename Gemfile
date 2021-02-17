@@ -70,4 +70,8 @@ gem 'font-awesome-sass', '~> 5.13'
 
 gem 'jp_prefecture'
 
-gem 'kaminari','~> 1.2.1'
+
+gem 'kaminari', '~> 0.17.0'
+
+# 2/16追加(DUKA)
+gem 'devise'
