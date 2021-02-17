@@ -1,0 +1,41 @@
+<h2>会員一覧</h2>
+<table>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= customer.last_name %></td>
+        <td><%= customer.email %></td>
+        <!--if is_deleted==false then 入会 else 退会 -->
+        <td><%= customer.is_deleted %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!--以下は削除-->
+<h2>確認用ここは後で消す</h2>
+<table>
+  <thead>
+    <tr>
+      <th>管理者ID</th>
+      <th>メールアドレス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td><%= admin.id %></td>
+        <td><%= admin.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
