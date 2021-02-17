@@ -5,6 +5,10 @@ one:
   name: MyString
   opinion: MyText
   image: MyString
+  genres_id: 
+  name: MyString
+  opinion: MyText
+  image_id: MyString
   price: 1
   is_active: false
 
@@ -13,5 +17,9 @@ two:
   name: MyString
   opinion: MyText
   image: MyString
+  genres_id: 
+  name: MyString
+  opinion: MyText
+  image_id: MyString
   price: 1
   is_active: false
