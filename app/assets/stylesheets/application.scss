@@ -13,9 +13,27 @@
  *= require_tree .
  *= require_self
  */
-
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.row-top {
+  background-image: url("<%= asset_path('cupcakes-690040_640.jpg') %>")
+}
+
+.about-title{
+    margin: 30px 0;
+    font-size: 70px;
+}
+
+.about-text{
+    font-size: 20px;
+}
+.col-lg-6-about{
+    margin-bottom: 30px;
+}
+
+.row-about {
+  background-image: url("<%= asset_path('cupcakes-690040_640.jpg') %>")
+}
 
