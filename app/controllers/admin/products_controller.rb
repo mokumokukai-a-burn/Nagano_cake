@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
@@ -22,4 +22,15 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :opinion, :image, :genre_id, :price, :is_active)
   end
 
+
+  def index
+    @products = Product.all.page(params[:page]).per(8)
+    @product = Product.new
+    @quantity = Product.count
+  end
+
+  def show
+     @product = Product.find(params[:id])
+  end
+  
 end
