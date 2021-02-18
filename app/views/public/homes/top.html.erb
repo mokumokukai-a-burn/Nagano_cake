@@ -1,7 +1,6 @@
 <div class="main container">
     <div class="row-top d-flex justify-content-center align-items-center">
-      <%= image_tag "cupcakes-690040_640.jpg" %>
-      <section class="col-lg-6 text-center">
+      <section class="subtext text-center">
         <p>
           ようこそ、ながのCAKEへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
@@ -9,6 +8,21 @@
           購⼊には会員登録が必要になります。
         </p>
       </section>
+    </div>
+    <div class="row">
+      <h2>新着商品</h2>
+      <% @products.each do |product| %>
+      <div class="col-3 items">
+        <%= attachment_image_tag product, :image_id, size: "220x170",  fallback: "cake.jpg" %>
+        <%= product.name %>
+        <%= product.price %>
+      </div>
+      <% end %>
+      <div class= "row-top2">
+        <p class="text-top"><%= link_to "全ての商品を見る>", products_path %></p>
+      </div>
+      
+      
     </div>
   </div>
 
