@@ -1,32 +1,40 @@
-<h3>ショッピングカート</h3>
-<%= link_to "カートを空にする", method: :delete %>
-  <table>
-	  <tr>
-        <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th></th>
-      </tr>
+<h4>ショッピングカート</h4>
+<%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger" %>
+<br>
+<table>
+<thead>
+<tr>
+<th>商品名</th>
+<th>単価（税込み）</th>
+<th>数量</th>
+<th>小計</th>
+<th></th>
+</tr>
+</thead>
+</table>
 
 <% @cart_items.each do |cart_item| %>
+<tr>
+
+<td><%= attachment_image_tag @priduct, :image_id, size: "90x90",  fallback: "cake.jpg" %>
+<%= cart_item.product.name %>
+<%= cart_item.product.price %>
+<%= form_for cart_item, url: cart_item_path(cart_item) do |f| %>
+<%= f.number_field :quantity, min:1, max: 20 %>
+<%= f.submit "変更" ,class:"btn btn-success" %></td>
+<% end %>
+
 <td></td>
 <td></td>
-<td></td>
-<td></td>
-<td><%= link_to "削除する", public_cart_items_path, method: :delete %></td>
+<td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
 <% end %>
 </tr>
 
-</tbody>
-  </table>
-
+<br>
 <div>
-<%= link_to "買い物を続ける", public_products_path, class:"btn btn-primary" %></div>
-
+<%= link_to "買い物を続ける", products_path, class:"btn btn-primary" %></div>
 </div>
-
+<br>
 <div>
-<%= link_to "情報入力に進む", class: "btn btn-success btn-lg" %>
-
+<%= link_to "情報入力に進む", new_order_path, class: "col-xs-12 btn btn-success" %>
 </div>
