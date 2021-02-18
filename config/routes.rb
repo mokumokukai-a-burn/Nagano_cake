@@ -9,11 +9,13 @@ Rails.application.routes.draw do
       registrations: 'admin/admins/registrations',
       passwords: 'admin/admins/passwords'
     }
+    resources :orders, only: [:index, :show]
+    resources :genres, only: [:index, :new, :create, :edit, :update]
+    resources :products, only: [:index, :new, :create, :edit, :update, :show ]
     resources :customers, only: [:index, :show, :edit, :update]
   end
 
   scope module: :public do
-    #devise_for :customers
     get "/" => "homes#top"
     get "/about" => "homes#about"
     devise_for :customers, controllers: {
@@ -21,14 +23,9 @@ Rails.application.routes.draw do
       registrations: 'public/customers/registrations',
       passwords: 'public/customers/passwords'
     }
-    resources :genres
+    resources :orders, only: [:index, :show]
     resources :cart_items
-    resources :products, only:[:index, :show]
+    resources :products
     resources :customers, only: [:show, :edit, :update, :unsubscrive, :withdraw]
   end
-  
-  
-  
-
-
 end
