@@ -75,3 +75,6 @@ gem 'kaminari', '~> 0.17.0'
 
 # 2/16追加(DUKA)
 gem 'devise'
+
+# 2/18追加(ネッシー)
+gem 'pry-byebug'

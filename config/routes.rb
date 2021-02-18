@@ -20,7 +20,11 @@ Rails.application.routes.draw do
       registrations: 'public/customers/registrations',
       passwords: 'public/customers/passwords'
     }
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items
+    get '/orders/complete' => 'orders#complete'
+    get '/orders/confirm' => 'orders#confirm'
+    resources :orders, only:[:new,:create,:index,:show]
     resources :products, only:[:index, :show]
     resources :customers, only: [:show, :edit, :update, :unsubscrive, :withdraw]
   end
