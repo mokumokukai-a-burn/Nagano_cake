@@ -1,0 +1,12 @@
+<h1>ジャンル一覧・追加</h1>
+<%= render 'genres/form', genre: @genre %>
+
+
+<table>
+  <tr>
+    <th>ジャンル</th>
+  </tr>
+  <tr>
+    <%= render 'genres/list', genres: @genres %>
+  </tr>
+</table>
