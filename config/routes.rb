@@ -19,7 +19,12 @@ Rails.application.routes.draw do
       registrations: 'public/customers/registrations',
       passwords: 'public/customers/passwords'
     }
-    resources :customers, only: [:show, :edit, :update, :unsubscrive, :withdraw]
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+        get :unsubscrive
+        patch :withdraw
+      end
+    end
   end
 
 end
