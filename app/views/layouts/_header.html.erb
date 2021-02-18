@@ -14,8 +14,8 @@
           <% if admin_admin_signed_in? %>
             <li><%= link_to '商品一覧',admin_customers_path, class:'fas nav-link text-light' %></li>
             <li><%= link_to '会員一覧',admin_customers_path, class:'fas nav-link text-light' %></li>
-            <li><%= link_to '注文履歴一覧',admin_customers_path, class:'fas  nav-link text-light' %></li>
-            <li><%= link_to 'ジャンル一覧',new_admin_ge, class:'fas nav-link text-light' %></li>
+            <li><%= link_to '注文履歴一覧',admin_root_path, class:'fas  nav-link text-light' %></li>
+            <li><%= link_to 'ジャンル一覧',admin_customers_path, class:'fas nav-link text-light' %></li>
             <li><%= link_to 'ログアウト',destroy_admin_admin_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
           <% elsif customer_signed_in? %>
             <li><%= link_to 'マイページ',customer_path(current_customer), class:'fas nav-link text-light' %></li>
