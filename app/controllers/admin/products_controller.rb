@@ -9,7 +9,7 @@ class Admin::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
-    redirect_to root_path
+    redirect_to admin_products_path
   end
 
   def edit
@@ -32,7 +32,5 @@ class Admin::ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :opinion, :image, :genre_id, :price, :is_active)
   end
-
-
 
 end

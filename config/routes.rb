@@ -7,9 +7,9 @@ Rails.application.routes.draw do
       registrations: 'admin/admins/registrations',
       passwords: 'admin/admins/passwords'
     }
+    resources :products, only: [:index, :new, :create, :edit, :update, :show ]
     resources :orders, only: [:index, :show]
     resources :genres, only: [:index, :new, :create, :edit, :update]
-    resources :products, only: [:index, :new, :create, :edit, :update, :show ]
     resources :customers, only: [:index, :show, :edit, :update]
   end
 
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       passwords: 'public/customers/passwords'
     }
 
-    resources :orders, only: [:index, :show]
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items
     resources :products
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
