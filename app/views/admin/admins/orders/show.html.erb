@@ -1,0 +1,31 @@
+<h4>注文履歴詳細</h4>
+<h4>購入者</h4>
+<%= order.customer.full_name %>
+<h4>注文日</h4>
+<%= order.created_at %>
+<h4>配送先</h4>
+<%= order.customer.addresses %>
+<h4>支払い方法</h4>
+<%= order.total_payment %>
+<h4>注文ステータス</h4>
+<%= order.status %>
+<table>
+  <tr>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th>制作ステータス</th>
+    <th></th>
+  </tr>
+  <tr>
+  <%= @orders.each do |order| %>
+    <td><%= order.product.name %></td>
+    <td><%= order.product.price %></td>
+    <td><%= order.order_products.sum(:amount) %></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+

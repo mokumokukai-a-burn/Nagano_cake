@@ -2,9 +2,7 @@ class Public::OrdersController < ApplicationController
 
 
   def index
-    @customer = Customer.find(params[:id])
-    @customers = @customer.product
-    # @orders = Order.all
+    @orders = Order.all
   end
 
   def new
@@ -15,6 +13,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[])
   end
 
   def create
