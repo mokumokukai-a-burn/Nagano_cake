@@ -24,20 +24,14 @@ Rails.application.routes.draw do
 
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items
-
-    get '/orders/complete' => 'orders#complete'
-    post '/orders/confirm' => 'orders#confirm'
+    resources :products
     resources :orders, only:[:new,:create,:index,:show]
-    resources :products, only:[:index, :show]
-    resources :customers, only: [:show, :edit, :update, :unsubscrive, :withdraw]
-
-    # resources :customers, only: [:show, :edit, :update] do
-    #   member do
-    #     get :unsubscrive
-    #     patch :withdraw
-    #   end
-    # end
-
-
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+        get :unsubscrive
+        patch :withdraw
+      end
+    end
   end
 end
