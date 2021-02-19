@@ -1,6 +1,5 @@
 class Public::OrdersController < ApplicationController
 
-
   def index
     @orders = Order.all
   end
@@ -38,7 +37,6 @@ private
   def order_params
     @payment =
     params.permit(:payment, :address)
-
   end
 
 
