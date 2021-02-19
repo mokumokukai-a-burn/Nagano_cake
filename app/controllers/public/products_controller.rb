@@ -10,4 +10,10 @@ class Public::ProductsController < ApplicationController
     @product = Product.find(params[:id])
      @cart_item = CartItem.new
   end
+
+  # def create
+  #   product = Product.new
+  #   product.save
+  #   render new
+  # end
 end

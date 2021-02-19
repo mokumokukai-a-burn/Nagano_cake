@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if admin_admin_signed_in?
-      admin_customers_path            #顧客一覧
+      admin_root_path            #注文履歴
     elsif customer_signed_in?
       customer_path(current_customer) #会員詳細
     end
