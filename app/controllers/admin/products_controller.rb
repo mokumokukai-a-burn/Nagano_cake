@@ -26,7 +26,8 @@ class Admin::ProductsController < ApplicationController
      @product = Product.find(params[:id])
   end
 
-   private
+
+  private
 
   def product_params
     params.require(:product).permit(:name, :opinion, :image, :genre_id, :price, :is_active)
