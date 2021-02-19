@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
 
   namespace :admin do
     root :to => "homes#top"
@@ -27,6 +25,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
     resources :cart_items
     resources :products
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :customers, only: [:show, :edit, :update] do
       member do
         get :unsubscrive

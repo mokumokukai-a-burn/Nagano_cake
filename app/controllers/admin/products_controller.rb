@@ -16,13 +16,6 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  private
-
-  def product_params
-    params.require(:product).permit(:name, :opinion, :image, :genre_id, :price, :is_active)
-  end
-
-
   def index
     @products = Product.all.page(params[:page]).per(8)
     @product = Product.new
@@ -32,5 +25,14 @@ class Admin::ProductsController < ApplicationController
   def show
      @product = Product.find(params[:id])
   end
-  
+
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :opinion, :image, :genre_id, :price, :is_active)
+  end
+
+
+
 end
