@@ -1,4 +1,5 @@
 <h3>注文情報確認</h3>
+<%= form_for  @order,url: {action: 'create'} do |f| %>
 <br>
 <br>
 <div class="col-xs-8">
@@ -13,13 +14,45 @@
 </thead>
 <tbody>
 </table>
+
+<% @total = 0 %>
+<% @cart_items.each do |cart_item| %>
+<td><%= attachment_image_tag @priduct, :image_id, size: "90x90",  fallback: "cake.jpg" %>
+<%= cart_item.product.name %>
+<%= cart_item.product.price %>
+
+<% @total += cart_item.product.price %>
+<% end %>
+
+
+<th>送料</th>
+<th>800</th>
+</tr>
+<tr>
+<th>商品合計</th>
+<td><%= @total %></td>
+</tr>
+<tr>
+<th>請求額</th>
+<td><%= @total + 800 %></td>
+</tr>
+
+
 <br>
 <br>
 <br>
 <h4>支払い方法</h4>
-<h4>お届け先</h4>
-<%= link_to "注文を確定する", orders_complete_path, class: 'btn btn-success' %>
+<%= @order.payment %>
 
+
+<h4>お届け先</h4>
+<%= @order.post_address %><%= @order.street_address %><br>
+<%= @order.address %><br>
+
+<% end %>
+<div class="text-center">
+<%= link_to "注文を確定する", orders_complete_path, class: 'btn btn-success' %>
+</div>
 
 
 

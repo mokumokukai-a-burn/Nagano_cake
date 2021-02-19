@@ -16,6 +16,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+
   def index
     @products = Product.all.page(params[:page]).per(8)
     @product = Product.new
@@ -25,7 +26,6 @@ class Admin::ProductsController < ApplicationController
   def show
      @product = Product.find(params[:id])
   end
-
 
   private
 

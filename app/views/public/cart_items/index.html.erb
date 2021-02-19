@@ -13,28 +13,33 @@
 </thead>
 </table>
 
-<% @cart_items.each do |cart_item| %>
+<table>
+<thead>
 <tr>
-
-<td><%= attachment_image_tag @priduct, :image_id, size: "90x90",  fallback: "cake.jpg" %>
-<%= cart_item.product.name %>
-<%= cart_item.product.price %>
+<% @total = 0 %>
+<% @cart_items.each do |cart_item| %>
+<%= attachment_image_tag @priduct, :image_id, size: "90x90",  fallback: "cake.jpg" %>
+<th><%= cart_item.product.name %></th>
+<th><%= cart_item.product.price %></th>
 <%= form_for cart_item, url: cart_item_path(cart_item) do |f| %>
-<%= f.number_field :quantity, min:1, max: 20 %>
-<%= f.submit "変更" ,class:"btn btn-success" %></td>
+<th><%= f.number_field :quantity, min:1, max: 20 %></th>
+<th><%= f.submit "変更" ,class:"btn btn-success" %></th>
+<th><% @total += cart_item.product.price %></th>
 <% end %>
-
-<td></td>
-<td></td>
-<td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+<%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
 <% end %>
 </tr>
+</thead>
+</table>
+
 
 <br>
 <div>
 <%= link_to "買い物を続ける", products_path, class:"btn btn-primary" %></div>
 </div>
 <br>
+<div>合計金額</div>
+<%= @total %>
 <div>
 <%= link_to "情報入力に進む", new_order_path, class: "col-xs-12 btn btn-success" %>
 </div>
