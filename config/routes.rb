@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
 
   namespace :admin do
     root :to => "homes#top"
@@ -26,6 +24,7 @@ Rails.application.routes.draw do
 
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items
+
     get '/orders/complete' => 'orders#complete'
     post '/orders/confirm' => 'orders#confirm'
     resources :orders, only:[:new,:create,:index,:show]
@@ -38,6 +37,7 @@ Rails.application.routes.draw do
     #     patch :withdraw
     #   end
     # end
+
 
   end
 end
