@@ -8,5 +8,9 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @orders = @order.orders
   end
+  
+  def update
+    
+  end
 
 end

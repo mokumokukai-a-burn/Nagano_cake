@@ -8,18 +8,18 @@
       <th>ステータス</th>
       <th>注文詳細</th>
     </tr>
-<%= @orders.each do |orders| %>
+<% @orders.each do |orders| %>
     <tr>
       <td><%= orders.created_at %></td>
       <td>
-        <%= orders.postal_code %>
+        <%= orders.post_address %>
+        <%= orders.street_address %>
         <%= orders.address %>
-        <%= products.name %>
       </td>
       <td><%= orders.products.name %></td>
-      <td><%= products.total_payment %></td>
-      <td><%= products.status %></td>
-      <td><%= link_to "詳細", order_path(orderes.id) %></td>
+      <td><%= orders.total_price %></td>
+      <td><%= orders.status %></td>
+      <td><%= link_to '詳細', order_path(orders.id) %></td>
     </tr>
   <% end %>
 </table>

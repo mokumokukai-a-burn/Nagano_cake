@@ -8,7 +8,7 @@
 <h4>支払い方法</h4>
 <%= order.total_payment %>
 <h4>注文ステータス</h4>
-<%= order.status %>
+<%= form.check_box :status, {}, "入金待ち", "入金確認", "製作中", "発送準備中", "発送済み" %>
 <table>
   <tr>
     <th>商品名</th>
