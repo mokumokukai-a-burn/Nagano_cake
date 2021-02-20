@@ -1,9 +1,9 @@
 <br>
 <h3 style="margin-left: 200px;">注文情報入力</h3><br>
-<%= form_with(model: @orders, local: true, url: orders_path, method: :post) do |f| %>
+<%= form_with(model: @order, local: true, url: orders_path, method: :post) do |f| %>
 <label style="margin-left: 130px;"><h4>支払い方法</h4></label><br>
-<label style="margin-left: 190px;"><%= f.radio_button :payment, 0, checked: "checked"%> クレジットカード</label><br>
-<label style="margin-left: 190px;"><%= f.radio_button :payment, 1 %> 銀行振込</label><br>
+<label style="margin-left: 190px;"><%= f.radio_button :payment, "クレジットカード", checked: "checked"%> クレジットカード</label><br>
+<label style="margin-left: 190px;"><%= f.radio_button :payment, "銀行振り込み" %> 銀行振込</label><br>
 <br>
 <label style="margin-left: 130px;"><h4>お届け先</h4></label><br>
 <label style="margin-left: 190px;"><%= f.radio_button :address,1,checked: "checked" %> ご自身の住所</label>
@@ -12,9 +12,10 @@
 <br>
     <%= current_customer.last_name %><%= current_customer.first_name %></label>
 <div>
-   <label style="margin-left:190px;"><%= f.radio_button :address ,2%> 登録済住所から選択</label><br>
+   <label style="margin-left:190px;"><%= f.radio_button :address ,2 %> 登録済住所から選択</label><br>
    <div><label style="margin-left: 220px;">
-   <%= f.select :street_address, [["fun","fun"],["soso","soso"],["not fun","not fun"]], include_blank: "選択して下さい"%>
+<%= f.collection_select(:address, current_customer.addresses.all, :post_address, :street_address)%>
+
 <br>
 </div>
  <label style="margin-left: 190px;">

@@ -5,13 +5,15 @@ class Public::OrdersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customers = @customer.product
     # @orders = Order.all
+    @product = Product.find(params[:id])
   end
 
   def new
+    @order = Order.new
     @customer = current_customer
-    @i = current_customer.cart_items
+    # @i = current_customer.cart_items
     @all = Product.all
-
+    @address = Address.all
   end
 
   def show
@@ -19,15 +21,17 @@ class Public::OrdersController < ApplicationController
 
   def create
     @customer = current_customer
+    # binding.pry
+    # params[:payment][:address] = params[:payment][:address].to_i
     @order = Order.new(order_params)
     @order.save
-
   end
 
   def confirm
     @cart_items = current_customer.cart_items
     @total = 0
-    @order = Order.find(params[:id])
+    @order = Order.new(order_params)
+    # @order = Order.find(params[:id])
 
   end
 
@@ -37,8 +41,8 @@ class Public::OrdersController < ApplicationController
 private
 
   def order_params
-    @payment =
-    params.permit(:payment, :address)
+    params.require(:order).permit(:payment, :address)
+
 
   end
 

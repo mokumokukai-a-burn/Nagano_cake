@@ -26,17 +26,18 @@ Rails.application.routes.draw do
     resources :cart_items
 
     get '/orders/complete' => 'orders#complete'
-    post '/orders/confirm' => 'orders#confirm'
+    get '/orders/confirm' => 'orders#confirm'
     resources :orders, only:[:new,:create,:index,:show]
     resources :products, only:[:index, :show]
-    resources :customers, only: [:show, :edit, :update, :unsubscrive, :withdraw]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
-    # resources :customers, only: [:show, :edit, :update] do
-    #   member do
-    #     get :unsubscrive
-    #     patch :withdraw
-    #   end
-    # end
+    resources :customers, only: [:show, :edit, :update, :unsubscrive, :withdraw]
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+        get :unsubscrive
+        patch :withdraw
+      end
+    end
 
 
   end
