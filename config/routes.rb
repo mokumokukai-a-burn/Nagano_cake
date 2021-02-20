@@ -27,7 +27,8 @@ Rails.application.routes.draw do
 
 
     get '/orders/complete' => 'orders#complete'
-    get '/orders/confirm' => 'orders#confirm'
+    post '/orders/confirm' => 'orders#confirm'
+    delete '/orders/destroy_all' => 'orders#destroy_all'
     resources :orders, only:[:new,:create,:index,:show]
     resources :products, only:[:index, :show]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
