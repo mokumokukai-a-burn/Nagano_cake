@@ -1,32 +1,53 @@
-views/public/customers/show.html.erb
-<h2>マイページ</h2>
-登録情報<div><%= link_to "編集する",edit_customer_path(@customer.id) %></div>
-<table>
-  <tr>
-	  <th>氏名</th>
-	  <th><%= @customer.last_name + " " + @customer.first_name %></th>
-  </tr>
-  <tr>
-    <th>カナ</th>
-    <th><%= @customer.last_name_kana + " " + @customer.first_name_kana %></th>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <th><%= @customer.post_number %></th>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <th><%= @customer.street_address %></th>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <th><%= @customer.phone_number %></th>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <th><%= @customer.email %></th>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <h2 class="customershow-title">マイページ</h2>
+  </div>
+  
+  <div class="row">
+    <h5 class="regd-text">登録情報</h5>
+    <div class="col-1"></div>
+    <span><%= link_to "編集する",edit_customer_path(@customer.id), class: 'btn btn-primary' %></span>
+  </div>
+  
+  <div class="row">
+    <table border="1">
+      <tr>
+    	  <td width="150" height="40" bgcolor="#C0C0C0">氏名</td>
+    	  <td width="350" height="40"><%= @customer.last_name + " " + @customer.first_name %></td>
+      </tr>
+      <tr>
+        <td width="150" height="40" bgcolor="#C0C0C0">カナ</td>
+        <td width="350" height="40"><%= @customer.last_name_kana + " " + @customer.first_name_kana %></td>
+      </tr>
+      <tr>
+        <td width="150" height="40" bgcolor="#C0C0C0">郵便番号</td>
+        <td width="350" height="40"><%= @customer.post_number %></td>
+      </tr>
+      <tr>
+        <td width="150" height="40" bgcolor="#C0C0C0">住所</td>
+        <td width="350" height="40"><%= @customer.street_address %></td>
+      </tr>
+      <tr>
+        <td width="150" height="40" bgcolor="#C0C0C0">電話番号</td>
+        <td width="350" height="40"><%= @customer.phone_number %></td>
+      </tr>
+      <tr>
+        <td width="150" height="40" bgcolor="#C0C0C0">メールアドレス</td>
+        <td width="350" height="40"><%= @customer.email %></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="row">
+    <h5 class="col-2">配送先</h5>
+    <div class="col-1"></div>
+    <span>一覧を見る</span>
+  </div>
 
-配送先<div>一覧を見る</div>
-注文履歴<div>一覧を見る</div>
+  <div class="row">
+    <h5 class="col-2">注文履歴</h5>
+    <div class="col-1"></div>
+    <span>一覧を見る</span>
+  </div>
+</div>
