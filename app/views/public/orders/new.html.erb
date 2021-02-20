@@ -1,23 +1,23 @@
 <br>
 <h3 style="margin-left: 200px;">注文情報入力</h3><br>
-<%= form_with(model: @orders, local: true, url: orders_path, method: :post) do |f| %>
-<label style="margin-left: 130px;"><h4>支払い方法</h4></label><br>
-<label style="margin-left: 190px;"><%= f.radio_button :payment, 0, checked: "checked"%> クレジットカード</label><br>
-<label style="margin-left: 190px;"><%= f.radio_button :payment, 1 %> 銀行振込</label><br>
-<br>
-<label style="margin-left: 130px;"><h4>お届け先</h4></label><br>
-<label style="margin-left: 190px;"><%= f.radio_button :address,1,checked: "checked" %> ご自身の住所</label>
-<div><label style="margin-left: 220px;">
+<%= form_with(model: @order, local: true, url: orders_path, method: :post) do |f| %>
+  <label style="margin-left: 130px;"><h4>支払い方法</h4></label><br>
+  <label style="margin-left: 190px;"><%= f.radio_button :payment, 'クレジットカード', checked: "checked"%> クレジットカード</label><br>
+  <label style="margin-left: 190px;"><%= f.radio_button :payment, '銀行振り込み' %> 銀行振込</label><br>
+  <br>
+  <label style="margin-left: 130px;"><h4>お届け先</h4></label><br>
+  <label style="margin-left: 190px;"><%= f.radio_button :address,1,checked: "checked" %> ご自身の住所</label>
+  <div><label style="margin-left: 220px;">
     <%= current_customer.post_number %> <%= current_customer.street_address %>
-<br>
+  <br>
     <%= current_customer.last_name %><%= current_customer.first_name %></label>
-<div>
-   <label style="margin-left:190px;"><%= f.radio_button :address ,2%> 登録済住所から選択</label><br>
-   <div><label style="margin-left: 220px;">
-   <%= f.select :street_address, [["fun","fun"],["soso","soso"],["not fun","not fun"]], include_blank: "選択して下さい"%>
-<br>
-</div>
- <label style="margin-left: 190px;">
+  <div>
+    <label style="margin-left:190px;"><%= f.radio_button :address ,2%> 登録済住所から選択</label><br>
+    <div><label style="margin-left: 220px;">
+    <%= f.select :street_address, [["fun","fun"],["soso","soso"],["not fun","not fun"]], include_blank: "選択して下さい"%>
+  <br>
+  </div>
+  <label style="margin-left: 190px;">
     <%= f.radio_button :address,3 %> 新しいお届け先</label>
     <div style="display: flex; margin-left:15% ;">
     <div  style="display: flex flex-direction: column;  flex-wrap: wrap;  width: 180px;">
@@ -26,8 +26,8 @@
     <%= f.label :"宛    名"%><br><br>
     </div>
     <div style=" margin-left:20px; ">
-    <%= f.text_field :postal_code  %><br><br>
-    <%= f.text_field :shipping_address ,size: "60" %><br><br>
-    <%= f.text_field :name %><br><br>
+    <%= f.text_field :post_address  %><br><br>
+    <%= f.text_field :street_address ,size: "60" %><br><br>
+    <%= f.text_field :address %><br><br>
     <%= f.submit "確認画面へ進む", class: 'btn btn-primary' %>
- <% end %>
+<% end %>
