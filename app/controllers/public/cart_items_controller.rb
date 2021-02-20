@@ -1,30 +1,25 @@
 class Public::CartItemsController < ApplicationController
 
+
   def index
-    @cart_items = CartItem.all
-    # @cart_item = CartItem.where(customer_id: current_customer.id)
-    # @products = Product.all
+    @cart_items = current_customer.cart_items
+    @total = 0
+
   end
 
   def create
-    # @product = Product.find_by(id: @cart_item.product_id)
     @cart_item = CartItem.new(cart_item_params)
-    # @cart_item.user_id = current_customer.id
-    # @cart_item.customer_id = current_customer.id
     # byebug
     # binding.pry
-    # @product = Product.new
     if @cart_item.save
       flash[:notice] = "カートに追加しました"
       redirect_to cart_items_path
     else
-      # session[:cart_item] = @cart_item.attributes.slice(*cart_item_params.keys)
       @product = Product.find(params[:cart_item][:product_id])
       flash[:alert] = "error"
       render "public/products/show"
     end
   end
-
 
   def update
     @cart_item = CartItem.find(params[:id])
@@ -47,6 +42,6 @@ class Public::CartItemsController < ApplicationController
 
   private
     def cart_item_params
-      params.require(:cart_item).permit(:customer_id, :product_id, :quantity)
+      params.require(:cart_item).permit(:customer_id, :product_id, :quantity, :postal_code, :shipping_address, :name)
     end
 end
