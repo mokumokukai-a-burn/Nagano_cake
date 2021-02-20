@@ -1,10 +1,16 @@
 class Admin::OrdersController < ApplicationController
   def index
+    @orders = Order.all
+    @order_kaminari = Order.page(params[:page]).reverse_order
   end
-  
+
   def show
-    @customer = Customer.find(params[:id])
-    @orders = @customer.orders
+    @order = Order.find(params[:id])
+    @orders = @order.orders
   end
   
+  def update
+    
+  end
+
 end

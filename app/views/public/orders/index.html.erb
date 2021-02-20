@@ -1,4 +1,4 @@
-<h1>注文履歴一覧</h1>
+<h4>注文履歴一覧</h4>
 <table class= "table">
     <tr>
       <th>注文日</th>
@@ -8,18 +8,18 @@
       <th>ステータス</th>
       <th>注文詳細</th>
     </tr>
-<%= @products.each do |products| %>
+<% @orders.each do |orders| %>
     <tr>
-      <td><%= products.created_at %></td>
+      <td><%= orders.created_at %></td>
       <td>
-        <%= products.post_address %>
-        <%= products.street_address %>
-        <%= products.address %>
+        <%= orders.post_address %>
+        <%= orders.street_address %>
+        <%= orders.address %>
       </td>
-      <td></td>
-      <td><%= products.total_price %></td>
-      <td><%= products.status %></td>
-      <td><%= link_to '詳細', order_path(orderes.id) %></td>
+      <td><%= orders.products.name %></td>
+      <td><%= orders.total_price %></td>
+      <td><%= orders.status %></td>
+      <td><%= link_to '詳細', order_path(orders.id) %></td>
     </tr>
   <% end %>
 </table>
