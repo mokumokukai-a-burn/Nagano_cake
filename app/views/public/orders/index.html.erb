@@ -12,14 +12,14 @@
     <tr>
       <td><%= orders.created_at %></td>
       <td>
-        <%= orders.post_address %>
-        <%= orders.street_address %>
-        <%= orders.address %>
+        <%= orders.post_address %><br>
+        <%= orders.street_address %><br>
+        <%= orders.address %><br>
       </td>
       <td><%= orders.products.name %></td>
       <td><%= orders.total_price %></td>
       <td><%= orders.status %></td>
-      <td><%= link_to '詳細', order_path(orders.id) %></td>
+      <td><%= link_to '表示する', order_path(orders.id) %></td>
     </tr>
   <% end %>
 </table>

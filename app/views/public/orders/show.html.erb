@@ -1,16 +1,16 @@
 <h4>注文履歴詳細</h4>
 <div>注文情報</div>
-<table>
+<table border="1" style="border-collapse: collapse" align="left">
   <tr>
-    <td>注文日</td>
-    <td><%= @order.created_at %></td>
+    <th>注文日</th>
+    <th><%= @order.created_at %></th>
   </tr>
   <tr>
     <td>配送先</td>
     <td>
-      <%= @order.post_address %>
-      <%= @order.address %>
-      <%= @order.address %>
+      <%= @order.post_address %><br>
+      <%= @order.street_address %><br>
+      <%= @order.address %><br>
     </td>
   </tr>
   <tr>
@@ -23,10 +23,10 @@
   </tr>
 </table>
 <div>請求情報</div>
-<table>
+<table border="1" style="border-collapse: collapse">
   <tr>
-    <td>商品合計</td>
-    <td><%= @order.total_price %></td>
+    <th>商品合計</th>
+    <th><%= @order.total_price %></th>
   </tr>
   <tr>
     <td>配送料</td>
@@ -38,7 +38,7 @@
   </tr>
 </table>
 <div>注文内容</div>
-<table>
+<table border="1" style="border-collapse: collapse">
   <tr>
     <th>商品</th>
     <th>単価（税込）</th>
@@ -47,8 +47,8 @@
   </tr>
   <tr>
     <td><%= @order.products.name %></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td><%= a = @order.ordered_products.price %></td>
+    <td><%= b = @order.ordered_products.amount %></td>
+    <td><%= a * b %> </td>
   </tr>
 </table>
