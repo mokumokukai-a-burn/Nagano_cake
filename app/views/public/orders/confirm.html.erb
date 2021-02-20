@@ -1,5 +1,4 @@
 <h3>注文情報確認</h3>
-<%= form_for  @order,url: {action: 'create'} do |f| %>
 <br>
 <br>
 <div class="col-xs-8">
@@ -49,7 +48,6 @@
 <%= @order.post_address %><%= @order.street_address %><br>
 <%= @order.address %><br>
 
-<% end %>
 <div class="text-center">
 <%= link_to "注文を確定する", orders_complete_path, class: 'btn btn-success' %>
 </div>

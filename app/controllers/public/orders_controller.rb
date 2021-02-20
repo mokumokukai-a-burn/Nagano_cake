@@ -1,14 +1,23 @@
 class Public::OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+
+    @customer = Customer.find(params[:id])
+    @customers = @customer.product
+    # @orders = Order.all
+    @product = Product.find(params[:id])
+
   end
 
   def new
-    @customer = current_customer
-    @i = current_customer.cart_items
-    @all = Product.all
     @order = Order.new
+    @customer = current_customer
+    # @i = current_customer.cart_items
+    @all = Product.all
+    @address = Address.all
+
+
+
   end
 
   def show
@@ -17,14 +26,19 @@ class Public::OrdersController < ApplicationController
 
   def create
     @customer = current_customer
+    # binding.pry
+    # params[:payment][:address] = params[:payment][:address].to_i
+    @order.save
     order = Order.new(order_params)
     order.save!
     redirect_to orders_path
+
   end
 
   def confirm
     @cart_items = current_customer.cart_items
     @total = 0
+    @order = Order.new(order_params)
     @order = Order.find(params[:id])
   end
 
