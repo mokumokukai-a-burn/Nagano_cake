@@ -2,13 +2,16 @@
 <h4>購入者</h4>
   <%= @order.customer %>
 <h4>注文日</h4>
-  <%= @order.created_at %>
+  <%= @order.created_at.strftime("%Y-%m-%d %H:%M") %>
 <h4>配送先</h4>
   <%= @order.customer %>
 <h4>支払い方法</h4>
   <%= @order.total_price %>
-<%= form_with url:"/admin/orders/#{@order.id}", method: :update, local: true do |f| %>
+<%= form_with model:@order, url:"/admin/orders/#{@order.id}", local:true do |f| %>
 <h4>注文ステータス</h4>
+<%= f.select :status, [["入金待ち", "入金待ち"], ["入金確認", "入金確認"], ["製作中", "製作中"], ["発送準備中", "発送準備中"],["発送済み", "発送済み"]] %>
+<%= f.submit '更新',class: 'btn btn-success' %>
+<% end %>
 <table>
   <tr>
     <th>商品名</th>
@@ -18,12 +21,22 @@
     <th>制作ステータス</th>
     <th></th>
   </tr>
+  <% @order.products.each do |order| %>
   <tr>
-    <td><%= @order.products.name %></td>
-    <td><%= @order.products %></td>
-    <td><%= @order.ordered_products.sum(:amount) %></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td><%= order.products.name %></td>
+    <td><%= opp = order.products.price %></td>
+    <td><%= oop = order.ordered_products.sum(:amount) %></td>
+    <td><%= opp * oop %></td>
+    <%= form_with model:@order.ordered_products.making_status, url:"/admin/ordered_products/#{@order.id}", local:true do |f| %>
+    <td><%= f.select :making_status, [["制作不可", "制作不可"], ["制作待ち", "制作待ち"], ["製作中", "製作中"], ["制作完了", "制作完了"]] %></td>
+    <td><%= f.submit '更新',class: 'btn btn-success' %></td>
+    <% end %>
   </tr>
+  <% end %>
 </table>
+<div>商品合計</div>
+<%= @order.orderedproducts.price %>
+<div>送料</div>
+<%= @order.shipping_cost %>
+<div>請求金額合計</div>
+<%= @order.total_price %>
