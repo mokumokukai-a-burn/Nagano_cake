@@ -14,7 +14,7 @@
     <td><%= orders.created_at.strftime("%Y-%m-%d %H:%M") %></td>
 
     <td>
-      <%= orders.customer %>
+      <%= orders.address %>
       <%= orders.customer %>
     </td>
     <td><%= orders.ordered_products.sum(:amount) %></td>
@@ -23,4 +23,3 @@
   </tr>
   <% end %>
 </table>
-<%= paginate @order %>

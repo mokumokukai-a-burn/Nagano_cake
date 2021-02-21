@@ -1,12 +1,18 @@
 class Public::OrdersController < ApplicationController
 
   def index
+
+    # @customer = Customer.find(params[:id])
+    # @customers = @customer.product
     @orders = Order.all
+    # @product = Product.find(params[:id])
+
   end
 
   def new
     @order = Order.new
     @customer = current_customer
+    # @i = current_customer.cart_items
     @all = Product.all
     @address = Address.all
     @orders = Order.all
@@ -22,12 +28,21 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.find(params[:id])
+    # @order = Order.find(params[:id])
     @cart_items = current_customer.cart_items
     @total = 0
+    # bindiqng.pry
     obj = order_params
     obj[:payment] = obj[:payment].to_i
+
+    # to_iで文字を整数に変換
+    # ラジオボタン０、１はenumで指定
+
     @order = Order.new(obj)
+    # 支払い方法ではenum必要ない。クレカ、銀行払いなどの表示のみ必要
+
+   
+
 
     if params[:order][:address_a] == "0"
       @order.post_address = current_customer.post_number

@@ -7,6 +7,7 @@
   <h3>商品説明</h3>
   <%= f.text_area :opinion %>
   <h3>ジャンル</h3>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   <h3>税抜き価格</h3>
   <%= f.text_field :price %>
   <h3>販売ステータス</h3>
