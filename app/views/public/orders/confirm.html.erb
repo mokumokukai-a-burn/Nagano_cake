@@ -51,6 +51,13 @@
 <%= @order.post_address %><%= @order.street_address %><br>
 <%= @order.address %><br>
 
+<%= f.hidden_field :post_address %>
+<%= f.hidden_field :street_address %>
+<%= f.hidden_field :address %>
+<%= f.hidden_field :shipping_cost, :value => "800" %>
+<%= f.hidden_field :total_price, :value => @total %>
+
+
 <div class="text-center">
 <%= f.submit "注文を確定する", class: 'btn btn-success' %>
 
