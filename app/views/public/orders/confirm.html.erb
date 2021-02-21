@@ -14,10 +14,11 @@
 <tbody>
 </table>
 
+<%= form_with(model: @order, local: true, url: orders_path, method: :post) do |f| %>
 <table class="table table-bordered">
 <% @total = 0 %>
 <% @cart_items.each do |cart_item| %>
-<th><%= attachment_image_tag @priduct, :image_id, size: "90x90",  fallback: "cake.jpg" %>
+<th><%= attachment_image_tag @product, :image_id, size: "90x90",  fallback: "cake.jpg" %>
 <%= cart_item.product.name %>
 <%= cart_item.product.price %>円
 <%= cart_item.quantity %>個
@@ -51,8 +52,10 @@
 <%= @order.address %><br>
 
 <div class="text-center">
-<%= link_to "注文を確定する", orders_destroy_all_path, method: :delete, class: 'btn btn-success' %>
+<%= f.submit "注文を確定する", class: 'btn btn-success' %>
+
+
 </div>
 
-
+<% end %>
 

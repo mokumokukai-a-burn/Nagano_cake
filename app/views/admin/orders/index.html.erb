@@ -10,8 +10,11 @@
 <% @orders.each do |orders| %>
   <tr>
     <td><%= orders.created_at %></td>
+
     <td></td>
+    <td><%= orders.address %></td>
     <td></td>
+    <td><%= orders.status %></td>
     <td></td>
   </tr>
 <% end %>

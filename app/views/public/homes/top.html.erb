@@ -13,7 +13,6 @@
       <h2>新着商品</h2>
       <% @products.each do |product| %>
       <div class="col-3 items">
-        <%= attachment_image_tag product, :image_id, size: "220x170",  fallback: "cake.jpg" %>
         <%= product.name %>
         <%= product.price %>
       </div>
@@ -21,10 +20,9 @@
       <div class= "row-top2">
         <p class="text-top"><%= link_to "全ての商品を見る>", products_path %></p>
       </div>
-      
-      
+
+
     </div>
   </div>
 
-  
-  
+

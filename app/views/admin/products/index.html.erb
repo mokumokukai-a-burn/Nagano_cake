@@ -1,8 +1,24 @@
+<h4>商品一覧</h4>
+<%= link_to "新規登録", new_admin_product_path(@product.id) %>
+<table class= "table">
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+<% @products.each do |product| %>
+    <tr>
+      <td>
+        <%= product.id %>
+      </td>
+        <td><%= link_to product.name, admin_product_path(product.id) %></td>
+        <td><%= product.price %></td>
+        <td><%= product.genre %></td>
+        <td><%= product.is_active %></td>
 
-
-
-
-views/admin/products/index.html.erb
-
-
-
+    </tr>
+  <% end %>
+</table>
+      <%= paginate @products %>

@@ -27,36 +27,29 @@ class Public::OrdersController < ApplicationController
   def create
     @customer = current_customer
     # binding.pry
-    current_customer.cart_items.destroy_all
+    # current_customer.cart_items.destroy_all
     redirect_to orders_complete_path
   end
 
 
   def confirm
+    @order = Order.find(params[:id])
     @cart_items = current_customer.cart_items
     @total = 0
     # bindiqng.pry
     obj = order_params
     obj[:payment] = obj[:payment].to_i
-    # obj[:address] = obj[:address].to_i
+    # to_iで文字を整数に変換
+    # ラジオボタン０、１はenumで指定
+
     @order = Order.new(obj)
-    # @order = Order.find(params[:id])
-
-    # if params[:order][:address] == "1"
-    #   @order.post_address = current_customer.postal_code
-    #   @order.street_address = current_customer.street_address
-    #   @order.address = current_customer.last_name+current_customer.first_name
-
-      # @cart_items = current_customer.cart_items
-      # @order.payment = params[:order][:payment]
-
+    # 支払い方法ではenum必要ない。クレカ、銀行払いなどの表示のみ必要
     if params[:order][:address_a] == "0"
       @order.post_address = current_customer.post_number
       @order.street_address = current_customer.street_address
-      @order.address = current_customer.last_name+ current_customer.first_name
-
+      @order.address = current_customer.last_name + current_customer.first_name
+      # 左側でorderのカラム　＝　右側でcustomerのカラム
     elsif params[:order][:address_a] == "1"
-      # binding.pry
       @sta = params[:order][:order].to_i
       @order_address = Address.find(@sta)
       @order.post_address = @order_address.post_address
@@ -79,7 +72,6 @@ class Public::OrdersController < ApplicationController
  def destroy_all
     @cart_items = current_customer.cart_items
 		@cart_items.destroy_all
-		# flash[:alert] = "カートの商品を全て削除しました"
 		redirect_to orders_complete_path
  end
 
@@ -88,6 +80,6 @@ private
   def order_params
     params.require(:order).permit(:payment, :address_a, :post_address, :street_address, :address, :order)
   end
-
-
+# address_aはラジオボタン選択した際の番号を認識するため必要
+# addressが宛名なので注意
 end
