@@ -18,7 +18,6 @@ class Public::OrdersController < ApplicationController
 
   def create
     @customer = current_customer
-
     redirect_to orders_complete_path
   end
 
