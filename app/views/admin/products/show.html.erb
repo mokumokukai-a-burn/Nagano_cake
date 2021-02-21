@@ -13,7 +13,7 @@
   <div style="margin-top: 100px;">
 <h1 style="margin-left: 40px;">商品名        <%= @product.name %></h1>
 <h5 style="margin-left: 40px;">商品説明      <%= @product.opinion %></h5>
-<h5 style="margin-left: 40px;">ジャンル      <%= @product.genre %></h5>
+<h5 style="margin-left: 40px;">ジャンル      <%= @product.genre.name %></h5>
 
 <br>
 <p style="margin-left: 40px;">税込価格（税抜き価格）<%= @product.price %>(<%= @product.price*1 %>)円</p>
