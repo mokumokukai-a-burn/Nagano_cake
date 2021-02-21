@@ -8,13 +8,18 @@
   </tr>
   <% @orders.each do |orders| %>
   <tr>
+
+
+
     <td><%= orders.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+
     <td>
       <%= orders.customer %>
       <%= orders.customer %>
     </td>
     <td><%= orders.ordered_products.sum(:amount) %></td>
     <td><%= orders.status %></td>
+
   </tr>
   <% end %>
 </table>
