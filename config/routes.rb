@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     }
     resources :products, only: [:index, :new, :create, :edit, :update, :show ]
     resources :orders, only: [:index, :show, :update]
+    resources :ordered_products, only: [:update]
     resources :genres, only: [:index, :new, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
   end
