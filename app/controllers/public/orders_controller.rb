@@ -28,14 +28,7 @@ class Public::OrdersController < ApplicationController
     @total = 0
     obj = order_params
     obj[:payment] = obj[:payment].to_i
-
-    # to_iで文字を整数に変換
-    # ラジオボタン０、１はenumで指定
-
     @order = Order.new(obj)
-    # 支払い方法ではenum必要ない。クレカ、銀行払いなどの表示のみ必要
-
-    
 
     if params[:order][:address_a] == "0"
       @order.post_address = current_customer.post_number
@@ -70,6 +63,4 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment, :address_a, :post_address, :street_address, :address, :order)
   end
-# address_aはラジオボタン選択した際の番号を認識するため必要
-# addressが宛名なので注意
 end
