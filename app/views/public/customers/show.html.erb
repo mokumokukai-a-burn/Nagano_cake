@@ -40,11 +40,10 @@
   </div>
   
   <div class="row">
-    <h5 class="col-2">配送先</h5>
+    <h5>配送先</h5>
     <div class="col-1"></div>
-    <span>一覧を見る</span>
+    <span><%= link_to '一覧を見る', addresses_path, class: 'btn btn-primary' %></span>
   </div>
-
 <div>配送先</div>
 <%= link_to '一覧を見る', addresses_path, class: 'btn btn-primary' %>
 <div>注文履歴</div>
