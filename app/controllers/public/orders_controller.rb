@@ -28,34 +28,21 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    # @order = Order.find(params[:id])
     @cart_items = current_customer.cart_items
     @total = 0
-    # bindiqng.pry
     obj = order_params
     obj[:payment] = obj[:payment].to_i
-
-    # to_iで文字を整数に変換
-    # ラジオボタン０、１はenumで指定
-
     @order = Order.new(obj)
-    # 支払い方法ではenum必要ない。クレカ、銀行払いなどの表示のみ必要
-
-   
-
-
     if params[:order][:address_a] == "0"
       @order.post_address = current_customer.post_number
       @order.street_address = current_customer.street_address
       @order.address = current_customer.last_name + current_customer.first_name
-      # 左側でorderのカラム　＝　右側でcustomerのカラム
     elsif params[:order][:address_a] == "1"
       @sta = params[:order][:order].to_i
       @order_address = Address.find(@sta)
       @order.post_address = @order_address.post_address
       @order.street_address  = @order_address.street_address
       @order.address  = @order_address.address
-
     elsif params[:order][:address_a] == "2"
       @order.post_address = params[:order][:post_address]
       @order.street_address = params[:order][:street_address]
