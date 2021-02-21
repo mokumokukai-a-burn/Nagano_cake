@@ -10,7 +10,7 @@
     </tr>
 <% @orders.each do |orders| %>
     <tr>
-      <td><%= orders.created_at %></td>
+      <td><%= orders.created_at.strftime("%Y-%m-%d") %></td>
       <td>
         <%= orders.post_address %><br>
         <%= orders.street_address %><br>
@@ -19,7 +19,7 @@
       <td><%= orders.products.name %></td>
       <td><%= orders.total_price %></td>
       <td><%= orders.status %></td>
-      <td><%= link_to '表示する', order_path(orders.id) %></td>
+      <td><%= link_to '表示する', order_path(orders.id), class: 'btn btn-primary' %></td>
     </tr>
   <% end %>
 </table>
