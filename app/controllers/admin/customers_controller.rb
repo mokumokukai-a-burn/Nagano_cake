@@ -1,9 +1,11 @@
 class Admin::CustomersController < ApplicationController
   #before_action :authenticate_customer!
   #before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
+  PER=10
   def index
     @customers = Customer.all
     @admins = Admin.all
+    @customer_pages = Customer.page(params[:page]).per(PER)
   end
 
   def show
