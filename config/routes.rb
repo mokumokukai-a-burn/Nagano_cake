@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       passwords: 'admin/admins/passwords'
     }
     resources :products, only: [:index, :new, :create, :edit, :update, :show ]
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :update]
     resources :genres, only: [:index, :new, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
   end
