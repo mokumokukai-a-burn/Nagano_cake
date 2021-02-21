@@ -24,8 +24,6 @@ class Public::OrdersController < ApplicationController
 
   def create
     @customer = current_customer
-    # binding.pry
-    # current_customer.cart_items.destroy_all
     redirect_to orders_complete_path
   end
 
