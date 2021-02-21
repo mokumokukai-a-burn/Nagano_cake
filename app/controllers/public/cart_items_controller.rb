@@ -2,6 +2,7 @@ class Public::CartItemsController < ApplicationController
 
 
   def index
+    # byebug
     @cart_items = current_customer.cart_items
     @total = 0
 
