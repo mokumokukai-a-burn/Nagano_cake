@@ -1,18 +1,12 @@
 class Public::OrdersController < ApplicationController
 
   def index
-
-    # @customer = Customer.find(params[:id])
-    # @customers = @customer.product
     @orders = Order.all
-    # @product = Product.find(params[:id])
-
   end
 
   def new
     @order = Order.new
     @customer = current_customer
-    # @i = current_customer.cart_items
     @all = Product.all
     @address = Address.all
     @orders = Order.all
@@ -24,19 +18,17 @@ class Public::OrdersController < ApplicationController
 
   def create
     @customer = current_customer
-
-    # binding.pry
-    @order = Order.new(order_params)
+    obj = order_params
+    obj[:payment] = obj[:payment].to_i
+    @order = Order.new(obj)
     @order.save
     create_all_ordered_products(@order)
-
     redirect_to orders_complete_path
   end
 
   def confirm
     @cart_items = current_customer.cart_items
     @total = 0
-
     obj = address_params
     obj[:payment] = obj[:payment].to_i
     @order = Order.new(obj)
@@ -68,31 +60,23 @@ class Public::OrdersController < ApplicationController
 
   private
 
-def create_all_ordered_products(order)
-  cart_items = current_customer.cart_items
-  cart_items.each do |cart_item|
-    # カートの商品を取り出すループ処理
-   ordered_product = OrderedProduct.new
-  # 空のお皿作り
-   ordered_product.order_id = order.id
-   ordered_product.product_id = cart_item.product_id
-   ordered_product.quantity = cart_item.quantity
-  # それぞれのカラムから取り出す
-   ordered_product.save
+  def create_all_ordered_products(order)
+    cart_items = current_customer.cart_items
+    cart_items.each do |cart_item|
+     ordered_product = OrderedProduct.new
+     ordered_product.order_id = order.id
+     ordered_product.product_id = cart_item.product_id
+     ordered_product.quantity = cart_item.quantity
+     ordered_product.save
+    end
+    cart_items.destroy_all
   end
-  cart_items.destroy_all
-  # 注文完了押したら全削除
-end
 
-def order_params
-  params.require(:order).permit(:post_address, :street_address, :address, :shipping_cost, :total_price)
-end
+  def order_params
+    params.require(:order).permit(:post_address, :street_address, :address, :shipping_cost, :total_price, :payment)
+  end
 
   def address_params
     params.require(:order).permit(:payment, :address_a, :post_address, :street_address, :address, :order)
   end
-
-# address_aはラジオボタン選択した際の番号を認識するため必要
-# addressが宛名なので注意
-
 end
