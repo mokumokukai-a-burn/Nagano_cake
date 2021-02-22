@@ -19,7 +19,6 @@ class Public::OrdersController < ApplicationController
 
   def create
     @customer = current_customer
-
     obj = order_params
     obj[:payment] = obj[:payment].to_i
     @order = Order.new(obj)
