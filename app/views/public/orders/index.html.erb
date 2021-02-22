@@ -13,6 +13,7 @@
       <th width="120" height="50" bgcolor="#C0C0C0">注文詳細</th>
     </tr>
   <% @orders.each do |orders| %>
+  <% orders.ordered_products.each do |ordered_product| %>
     <tr>
       <td height="75"><%= orders.created_at.strftime("%Y-%m-%d") %></td>
       <td height="75">
@@ -20,7 +21,6 @@
         <%= orders.street_address %>
         <%= orders.address %>
       </td>
-      <% orders.ordered_products.each do |ordered_product| %>
       <td height="75"><%= ordered_product.product.name %></td>
       <td height="75"><%= orders.total_price %></td>
       <td height="75"><%= orders.status %></td>
