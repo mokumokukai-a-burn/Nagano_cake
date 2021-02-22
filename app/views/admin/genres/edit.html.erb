@@ -1,2 +1,17 @@
-<h1>ジャンル編集</h1>
-<%= render 'genres/form', genre: @genre %>
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+      <h2>ジャンル編集</h2>
+  </div>
+  <div class="row">  
+    <%= form_with model:@genre, url:admin_genre_path(@genre.id), local:true do |f| %>
+      <table class= "table table-borderless">
+        <tr>
+          <th><span>ジャンル名<span></th>
+          <td><%= f.text_field :name, class: "form-control name" %></td>
+          <td><%= f.submit '変更を保存', class: 'btn btn-success' %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>
