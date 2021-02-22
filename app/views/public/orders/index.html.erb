@@ -16,10 +16,13 @@
         <%= orders.street_address %><br>
         <%= orders.address %><br>
       </td>
-      <td><%= orders.products.name %></td>
+      <td><% orders.ordered_products.each do |ordered_product| %>
+          <%= ordered_product.product.name %></td>
       <td><%= orders.total_price %></td>
       <td><%= orders.status %></td>
+
       <td><%= link_to '表示する', order_path(orders.id), class: 'btn btn-primary' %></td>
     </tr>
+  <% end %>
   <% end %>
 </table>

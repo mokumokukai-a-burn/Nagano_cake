@@ -8,4 +8,8 @@ class Product < ApplicationRecord
   attachment :image
 
   enum payment: {販売中: 0, 販売停止中: 1 }
+
+  validates :name, presence: true
+  validates :opinion, presence: true
+  validates :price, presence: true
 end
