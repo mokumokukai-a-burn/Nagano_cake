@@ -11,4 +11,6 @@ class Order < ApplicationRecord
 
   attr_accessor :address_a, :order
   # attr_accessorはデータベースに保存しないけどコントローラで必要なため記述してストロングパラメーターで許可を得るようにする。
+
+  validates :total_price, presence: true
 end

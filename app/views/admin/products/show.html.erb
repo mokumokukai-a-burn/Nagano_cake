@@ -14,13 +14,9 @@
 <h1 style="margin-left: 40px;">商品名        <%= @product.name %></h1>
 <h5 style="margin-left: 40px;">商品説明      <%= @product.opinion %></h5>
 <h5 style="margin-left: 40px;">ジャンル      <%= @product.genre.name %></h5>
-
 <br>
-<p style="margin-left: 40px;">税込価格（税抜き価格）<%= @product.price %>(<%= @product.price*1 %>)円</p>
+<p style="margin-left: 40px;">税込価格（税抜き価格）<%= @product.price %>(<%= (@product.price*0.909).floor %>)円</p>
 <p style="margin-left: 40px;">販売ステータス<%= @product.is_active %></p>
-
-
-
 
 <p style="margin-left: 40px;"><%= link_to "編集する", edit_admin_product_path(@product.id), class: 'btn btn-success' %></p>
 </div>

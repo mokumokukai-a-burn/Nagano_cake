@@ -15,7 +15,7 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     else
       @product = Product.find(params[:cart_item][:product_id])
-      flash[:alert] = "error"
+      flash[:notice] = "error"
       render "public/products/show"
     end
   end
