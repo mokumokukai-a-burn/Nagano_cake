@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_133656) do
+ActiveRecord::Schema.define(version: 2021_02_18_054120) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2021_02_19_133656) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -55,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_133656) do
     t.string "street_address", null: false
     t.string "post_number", null: false
     t.string "phone_number", null: false
-    t.boolean "is_deleted", default: false, null: false
+    t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -72,23 +71,22 @@ ActiveRecord::Schema.define(version: 2021_02_19_133656) do
     t.integer "order_id"
     t.integer "product_id"
     t.integer "price"
-    t.integer "amount"
+    t.integer "quantity"
+    t.integer "making_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "making_status", default: 0, null: false
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "payment"
     t.string "post_address"
     t.string "street_address"
     t.string "address"
     t.integer "shipping_cost"
+    t.integer "status"
     t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "customer_id"
-    t.integer "status", default: 0, null: false
-    t.integer "payment", default: 0, null: false
   end
 
   create_table "products", force: :cascade do |t|
