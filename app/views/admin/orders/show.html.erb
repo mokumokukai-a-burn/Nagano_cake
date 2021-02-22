@@ -43,22 +43,30 @@
         <th>制作ステータス</th>
         <th></th>
       </tr>
-      <% @order.products.each do |order| %>
+      <% @order.ordered_products.each do |ordered_product| %>
         <%= form_with model:@order.ordered_products, url:"/admin/ordered_products/#{@order.id}", local:true do |f| %>
-      <tr>
-        <td><%= order.name %></td>
-        <td><%= a = order.price %></td>
-        <td><%= b = order.ordered_products.quantity %></td>
-        <td><%= a * b %></td>
-        <td>
-        <%= f.select :making_status, [["制作不可", "制作不可"], ["製作待ち", "製作待ち"], ["製作中", "製作中"], ["制作完了", "制作完了"]] %>
-        </td>
-        <td>
-        <%= f.submit '更新',class: 'btn btn-success' %>
+          <tr>
+            <td><%= ordered_product.product.name %></td>
+            <td><%= a = ordered_product.product.price %></td>
+            <td><%= b = ordered_product.quantity %></td>
+            <td><%= a * b %></td>
+            <td>
+              <%= f.select :making_status, [["制作不可", "制作不可"], ["製作待ち", "製作待ち"], ["製作中", "製作中"], ["制作完了", "制作完了"]] %>
+            </td>
+            <td>
+              <%= f.submit '更新',class: 'btn btn-success' %>
+            </td>
+          </tr>
         <% end %>
-        </td>
-      </tr>
       <% end %>
     </table>
+    <div>
+  <div>商品合計</div>
+  <div>送料</div>
+  <%= @order.shipping_cost %>
+  <div>請求金額合計</div>
+  <%= @order.total_price %>
   </div>
-</div>
+
+ 
+  

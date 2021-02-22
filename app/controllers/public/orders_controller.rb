@@ -14,6 +14,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+		@ordered_products = @order.ordered_products
   end
 
   def create
@@ -21,6 +22,7 @@ class Public::OrdersController < ApplicationController
     obj = order_params
     obj[:payment] = obj[:payment].to_i
     @order = Order.new(obj)
+    @order.customer_id = current_customer.id
     @order.save
     create_all_ordered_products(@order)
     redirect_to orders_complete_path
@@ -32,6 +34,8 @@ class Public::OrdersController < ApplicationController
     obj = address_params
     obj[:payment] = obj[:payment].to_i
     @order = Order.new(obj)
+
+    # 支払い方法ではenum必要ない。クレカ、銀行払いなどの表示のみ必要
     if params[:order][:address_a] == "0"
       @order.post_address = current_customer.post_number
       @order.street_address = current_customer.street_address
@@ -72,9 +76,11 @@ class Public::OrdersController < ApplicationController
     cart_items.destroy_all
   end
 
-  def order_params
-    params.require(:order).permit(:post_address, :street_address, :address, :shipping_cost, :total_price, :payment)
-  end
+
+def order_params
+  params.require(:order).permit(:post_address, :street_address, :address, :shipping_cost, :total_price, :payment, :status)
+end
+
 
   def address_params
     params.require(:order).permit(:payment, :address_a, :post_address, :street_address, :address, :order)

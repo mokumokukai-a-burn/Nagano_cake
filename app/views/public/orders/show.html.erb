@@ -51,20 +51,22 @@
     <h5 style="margin: 20px 0;">注文内容</h5>
   </div>
   <div class="row">
-    <table border="1" style="border-collapse: collapse">
-      <tr>
-        <th width="300" height="50" bgcolor="#C0C0C0">商品</th>
-        <th width="150" height="50" bgcolor="#C0C0C0">単価（税込）</th>
-        <th width="70" height="50" bgcolor="#C0C0C0">個数</th>
-        <th width="90" height="50" bgcolor="#C0C0C0">小計</th>
-      </tr>
-      <tr>
-        <td height="50"><%= @order.products.name %></td>
-        <td height="50"><%= a = @order.ordered_products.price %></td>
-        <td height="50"><%= b = @order.ordered_products.quantity %></td>
-        <td height="50"><%= a * b %></td>
-      </tr>
-    </table>
+    <% @ordered_products.each do |ordered_product| %>
+      <table border="1" style="border-collapse: collapse">
+        <tr>
+          <th width="300" height="50" bgcolor="#C0C0C0">商品</th>
+          <th width="150" height="50" bgcolor="#C0C0C0">単価（税込）</th>
+          <th width="70" height="50" bgcolor="#C0C0C0">個数</th>
+          <th width="90" height="50" bgcolor="#C0C0C0">小計</th>
+        </tr>
+        <tr>
+          <td height="50"><%= @order.products.name %></td>
+          <td height="50"><%= a = @order.ordered_products.price %></td>
+          <td height="50"><%= b = @order.ordered_products.quantity %></td>
+          <td height="50"><%= a * b %></td>
+        </tr>
+      </table>
+    <% end %>
   </div>
 </div>
 </div>

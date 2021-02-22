@@ -3,7 +3,6 @@
     <div class="col-1"></div>
     <h2 >商品新規登録</h2>
   </div>
-
   <div class="d-flex justify-content-center">
     <%= form_with model:@product, url:admin_products_path, local:true do |f| %>
       <table class="table-borderless">
@@ -16,7 +15,7 @@
         <tr>
           <div class="form-group">
           <th><h4>商品名</h4></th>
-          <td><%= f.text_field :nam, class: "form-control name", placeholder: "商品名"  %></td>
+          <td><%= f.text_field :name, class: "form-control name", placeholder: "商品名"  %></td>
           </div>
         </tr>
         <tr>

@@ -9,5 +9,4 @@ Product.create(id: 1, name: 'test name1', price: '1000', opinion: '栃木県産�
 Product.create(id: 2, name: 'test name2', price: '2000', opinion: '栃木県産のとちおとめを贅沢に使用しています。2')
 Product.create(id: 3, name: 'test name3', price: '3000', opinion: '栃木県産のとちおとめを贅沢に使用しています。3')
 Product.create(id: 4, name: 'test name4', price: '4000', opinion: '栃木県産のとちおとめを贅沢に使用しています。4')
-
 # CartItem.create(id: 4, user_id: '4', product_id: '4', quantity: '4')
