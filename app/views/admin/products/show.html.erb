@@ -1,28 +1,48 @@
-<h3>商品詳細</h3>
-<div class="row"><br>
-  <div style="margin-top: 100px;">
-
-    <div class="col-xs-5">
-     <p style="margin-left: 280px;"><%= attachment_image_tag @product, :image_id, size: "300x220",  fallback: "cake.jpg" %><p></p><br>
-    </div>
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <h1 style="margin: 50px 0;">商品詳細</h1>
   </div>
-  <div class="col-xs-5">
+  <div class="row">
     <div style="margin-top: 100px;">
-      <h1 style="margin-left: 40px;">商品名        <%= @product.name %></h1>
-      <h5 style="margin-left: 40px;">商品説明      <%= @product.opinion %></h5>
-      <h5 style="margin-left: 40px;">ジャンル      <%= @product.genre.name %></h5><br>
-      <p style="margin-left: 40px;">税込価格（税抜き価格）<%= @product.price %>(<%= @product.price*1 %>)円</p>
-      <p style="margin-left: 40px;">
-        販売ステータス
-      <%  pia = @product.is_active %>
-      <% if pia == true %>
-        販売中
-      <% else %>
-        販売中止
-      <% end %>
-      </p>
-      <p style="margin-left: 40px;"><%= link_to "編集する", edit_admin_product_path(@product.id), class: 'btn btn-success' %></p>
+      <div class="col-xs-5">
+       <p style="margin-left: 280px;"><%= attachment_image_tag @product, :image_id, size: "300x220",  fallback: "cake.jpg" %><p></p><br>
+      </div>
+    </div>
+    <div class="col-xs-5">
+      <div style="margin-top: 100px;">
+        <h3 style="margin-left: 40px;">
+          商品名       
+          <span class="col-1"></span>
+          <%= @product.name %>
+        </h3>
+        <p style="margin-left: 40px;">
+          商品説明      
+          <span class="col-1"></span>
+          <%= @product.opinion %>
+        </p>
+        <p style="margin-left: 40px;">
+          ジャンル
+          <span class="col-1"></span>
+          <%= @product.genre.name %>
+        </p>
+        <p style="margin-left: 40px;">
+          税込価格（税抜き価格）
+          <span class="col-1"></span>
+          <%= @product.price %>(<%= @product.price*1 %>)円
+        </p>
+        <p style="margin-left: 40px;">
+          販売ステータス
+          <span class="col-1"></span>
+          <%  pia = @product.is_active %>
+          <% if pia == true %>
+            販売中
+          <% else %>
+            販売中止
+          <% end %>
+        </p>
+        <p style="margin-left: 40px;"><%= link_to "編集する", edit_admin_product_path(@product.id), class: 'btn btn-success' %></p>
+      </div>
     </div>
   </div>
 </div>
-
