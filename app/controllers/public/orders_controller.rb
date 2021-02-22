@@ -18,30 +18,30 @@ class Public::OrdersController < ApplicationController
 
   def create
     @customer = current_customer
-
+    obj = order_params
+    obj[:payment] = obj[:payment].to_i
+    @order = Order.new(obj)
+    @order.save
+    create_all_ordered_products(@order)
     redirect_to orders_complete_path
   end
 
   def confirm
-    @order = Order.find(params[:id])
     @cart_items = current_customer.cart_items
     @total = 0
-    obj = order_params
+    obj = address_params
     obj[:payment] = obj[:payment].to_i
     @order = Order.new(obj)
-
     if params[:order][:address_a] == "0"
       @order.post_address = current_customer.post_number
       @order.street_address = current_customer.street_address
       @order.address = current_customer.last_name + current_customer.first_name
-      # 左側でorderのカラム　＝　右側でcustomerのカラム
     elsif params[:order][:address_a] == "1"
       @sta = params[:order][:order].to_i
       @order_address = Address.find(@sta)
       @order.post_address = @order_address.post_address
       @order.street_address  = @order_address.street_address
       @order.address  = @order_address.address
-
     elsif params[:order][:address_a] == "2"
       @order.post_address = params[:order][:post_address]
       @order.street_address = params[:order][:street_address]
@@ -60,7 +60,23 @@ class Public::OrdersController < ApplicationController
 
   private
 
+  def create_all_ordered_products(order)
+    cart_items = current_customer.cart_items
+    cart_items.each do |cart_item|
+     ordered_product = OrderedProduct.new
+     ordered_product.order_id = order.id
+     ordered_product.product_id = cart_item.product_id
+     ordered_product.quantity = cart_item.quantity
+     ordered_product.save
+    end
+    cart_items.destroy_all
+  end
+
   def order_params
+    params.require(:order).permit(:post_address, :street_address, :address, :shipping_cost, :total_price, :payment)
+  end
+
+  def address_params
     params.require(:order).permit(:payment, :address_a, :post_address, :street_address, :address, :order)
   end
 end
