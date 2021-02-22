@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :customer, optional: true
+  belongs_to :customer
   has_many :ordered_products
   has_many :products, through: :ordered_products
   enum status: {
@@ -10,7 +10,9 @@ class Order < ApplicationRecord
   enum payment: {クレジットカード: 0, 銀行振り込み: 1 }
 
   attr_accessor :address_a, :order
+
   # attr_accessorはデータベースに保存しないけどコントローラで必要なため記述してストロングパラメーターで許可を得るようにする。
 
   validates :total_price, presence: true
+
 end
