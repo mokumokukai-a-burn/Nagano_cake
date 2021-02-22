@@ -59,10 +59,10 @@
         <th width="90" height="50" bgcolor="#C0C0C0">小計</th>
       </tr>
       <tr>
-        <td height="50">ケーキ</td>
-        <td height="50">1,000</td>
-        <td height="50">2</td>
-        <td height="50">2,000</td>
+        <td height="50"><%= @order.products.name %></td>
+        <td height="50"><%= a = @order.ordered_products.price %></td>
+        <td height="50"><%= b = @order.ordered_products.quantity %></td>
+        <td height="50"><%= a * b %></td>
       </tr>
     </table>
   </div>
