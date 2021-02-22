@@ -60,10 +60,10 @@
           <th width="90" height="50" bgcolor="#C0C0C0">小計</th>
         </tr>
         <tr>
-          <td height="50"><%= @order.products.name %></td>
-          <td height="50"><%= a = @order.ordered_products.price %></td>
-          <td height="50"><%= b = @order.ordered_products.quantity %></td>
-          <td height="50"><%= a * b %></td>
+          <td height="50"><%= ordered_product.product.name %></td>
+          <td height="50"><%= ordered_product.product.price %></td>
+          <td height="50"><%= ordered_product.quantity %></td>
+          <td height="50"><%= ((ordered_product.product.price*1).floor*ordered_product.quantity) %></td>
         </tr>
       </table>
     <% end %>

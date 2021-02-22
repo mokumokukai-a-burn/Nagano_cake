@@ -7,7 +7,6 @@
     <div class="col-xs-8">
       <%= form_with(model: @order, local: true, url: orders_path, method: :post) do |f| %>
       <% @total = 0 %>
-      <% @cart_items.each do |cart_item| %>
       <table border="1">
         <thead>
           <tr>
@@ -17,6 +16,7 @@
             <th width="100" height="50" bgcolor="#C0C0C0">小計</th>
           </tr>
         </thead>
+        <% @cart_items.each do |cart_item| %>
         <tbody>
           <th height="50">
             <span><%= attachment_image_tag @product, :image_id, size: "40x40",  fallback: "cake.jpg" %></span>
@@ -26,8 +26,8 @@
           <td height="50"><%= cart_item.quantity %>個</td>
           <td height="50"><%= ((cart_item.product.price*1).floor*cart_item.quantity) %><% @total += ((cart_item.product.price*1).floor*cart_item.quantity) %></td>
         </tbody>
+        <% end %>
       </table>
-      <% end %>
     </div>
     <div style="margin-left: 40px;">
       <table border="1">
