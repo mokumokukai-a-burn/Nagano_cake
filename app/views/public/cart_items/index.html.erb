@@ -16,20 +16,21 @@
 </tr>
 </thead>
 
+
 <thead>
 <tr>
 <div><% @total = 0 %>
 <% @cart_items.each do |cart_item| %>
-<td  style="hight: 15px"><%= attachment_image_tag @product, :image_id, size: "50x50",  fallback: "cake.jpg" %><%= cart_item.product.name %></td>
+<td  style="hight: 15px"><%= attachment_image_tag cart_item.product, :image, size: "50x50",  fallback: "cake.jpg" %><%= cart_item.product.name %></td>
 <th class="align-middle"><%= cart_item.product.price %></th>
 <%= form_for cart_item, url: cart_item_path(cart_item) do |f| %>
 <td class="align-middle"><%= f.number_field :quantity, min:1, max: 20 %><%= f.submit "変更" ,class:"btn btn-success" %></td>
 <th class="align-middle"><%= ((cart_item.product.price*1).floor*cart_item.quantity) %></th>
 <% @total += ((cart_item.product.price*1).floor*cart_item.quantity) %>
-<% end %>
 <td style="hight: 15px"><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
 <% end %>
 </tr>
+<% end %>
 </thead>
 </table>
 </div>

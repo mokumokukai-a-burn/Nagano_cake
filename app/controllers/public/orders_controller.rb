@@ -19,10 +19,12 @@ class Public::OrdersController < ApplicationController
 
   def create
     @customer = current_customer
-
     obj = order_params
     obj[:payment] = obj[:payment].to_i
     @order = Order.new(obj)
+    @order.customer_id = current_customer.id
+
+    # p @order
     @order.save
     create_all_ordered_products(@order)
     redirect_to orders_complete_path

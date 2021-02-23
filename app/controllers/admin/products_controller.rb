@@ -7,8 +7,9 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.save
+    @product = Product.new(product_params)
+    # byebug
+    @product.save
     redirect_to admin_products_path
   end
 
@@ -33,6 +34,7 @@ class Admin::ProductsController < ApplicationController
     # @order = Order.new(obj)
     # @customer = Customer.find(params[:id])
     @product = Product.find(params[:id])
+    # byebug
   	@product.update(product_params)
   # 	redirect_to admin_customer_path(@customer.id)
   	redirect_to admin_products_path
