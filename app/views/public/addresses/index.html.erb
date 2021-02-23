@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-1"></div>
-    <h2>配送先一覧</h2>
   </div>
-  <!--配送先投稿フォーム-->
   <div class='row-address'>
-    <div class="form-box"><%= form_with model:@address ,url:addresses_path, local:true do |f| %></div>
+    <div class="form-box">
+      <%= form_with model:@address ,url:addresses_path, local:true do |f| %>
       <table class="table table-borderless">
         <tr>
           <div class="form-group">
@@ -31,13 +30,15 @@
         <tr>
           <div class="form-group">
             <th></th>
-            <td><%= f.submit "新規登録",class: 'btn btn-success' %></td
+            <td><%= f.submit "新規登録",class: 'btn btn-success' %></td>
           </div>
         </tr>
-    </table>
-    <% end %>
+      </table>
+      <% end %>
+    </div>
   </div>
   
+  <h2>配送先一覧</h2>
   <div class='row'>
      <% @addresses.each do |address| %>
       <table border="1">
@@ -54,7 +55,6 @@
               <td height="70"><%= address.post_address %></td>
               <td height="70"><%= address.street_address %></td>
               <td height="70"><%= address.address %></td>
-              <!--if is_deleted==false then 入会 else 退会 -->
               <td height="70">
                 <span><%= link_to '編集する', edit_address_path(address), class: 'btn btn-success' %></span>
                 <span></span>

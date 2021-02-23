@@ -78,3 +78,4 @@ gem 'devise'
 
 # 2/18追加(ネッシー)
 gem 'pry-byebug'
+gem 'jquery-rails'
