@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="col-1"></div>
-    <h2><%= @customer.last_name + @customer.first_name %> の会員情報編集ページ</h2>
+    <h2 style="margin: 50px 0;"><%= @customer.last_name + @customer.first_name %> の会員情報編集ページ</h2>
   </div>
   <div class="row">
   <%= form_with model:@customer ,url:admin_customer_path(@customer.id), local:true do |f| %>

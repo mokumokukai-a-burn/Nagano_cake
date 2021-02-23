@@ -1,28 +1,32 @@
-<h4>注文履歴一覧</h4>
-<table class= "table">
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <h3 style="margin: 50px;">注文履歴一覧</h3>
+  </div>
+  <table border="1">
     <tr>
-      <th>注文日</th>
-      <th>配送先</th>
-      <th>注文商品</th>
-      <th>支払い金額</th>
-      <th>ステータス</th>
-      <th>注文詳細</th>
+      <th width="150" height="50" bgcolor="#C0C0C0">注文日</th>
+      <th width="450" height="50" bgcolor="#C0C0C0">配送先</th>
+      <th width="150" height="50" bgcolor="#C0C0C0">注文商品</th>
+      <th width="90" height="50" bgcolor="#C0C0C0">支払い金額</th>
+      <th width="120" height="50" bgcolor="#C0C0C0">ステータス</th>
+      <th width="120" height="50" bgcolor="#C0C0C0">注文詳細</th>
     </tr>
-<% @orders.each do |orders| %>
+  <% @orders.each do |orders| %>
+  <% orders.ordered_products.each do |ordered_product| %>
     <tr>
-      <td><%= orders.created_at.strftime("%Y-%m-%d") %></td>
-      <td>
-        <%= orders.post_address %><br>
-        <%= orders.street_address %><br>
-        <%= orders.address %><br>
+      <td height="75"><%= orders.created_at.strftime("%Y-%m-%d") %></td>
+      <td height="75">
+        <%= orders.post_address %>
+        <%= orders.street_address %>
+        <%= orders.address %>
       </td>
-      <td><% orders.ordered_products.each do |ordered_product| %>
-          <%= ordered_product.product.name %></td>
-      <td><%= orders.total_price %></td>
-      <td><%= orders.status %></td>
-
-      <td><%= link_to '表示する', order_path(orders.id), class: 'btn btn-primary' %></td>
+      <td height="75"><%= ordered_product.product.name %></td>
+      <td height="75"><%= orders.total_price %></td>
+      <td height="75"><%= orders.status %></td>
+      <td height="75"><%= link_to '表示する', order_path(orders.id), class: 'btn btn-primary' %></td>
     </tr>
   <% end %>
   <% end %>
-</table>
+  </table>
+</div>

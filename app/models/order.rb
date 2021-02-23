@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :customer
+  belongs_to :customer, optional: true
   has_many :ordered_products
   has_many :products, through: :ordered_products
   enum status: {

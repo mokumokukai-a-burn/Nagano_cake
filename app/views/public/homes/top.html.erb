@@ -10,16 +10,20 @@
       </section>
     </div>
     <div class="row">
-      <h2>新着商品</h2>
-      <% @products.each do |product| %>
-      <div class="col-3 items">
-        <%= product.name %>
-        <%= product.price %>
-      </div>
+      <h2 style="margin: 10px 0;">新着商品</h2>
     </div>
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-3">
+          <p><%= attachment_image_tag product, :image_id, size: "220x170",  fallback: "cake.jpg" %></p>
+          <p><%= product.name %></p>
+          <p><%= product.price %></p>
+        </div>
       <% end %>
-    <div class= "row-top2">
-      <p class="text-top"><%= link_to "全ての商品を見る>", products_path %></p>
+    </div>
+    <div class="row">
+      <div class="col-11"></div>
+      <div style="margin-left: 950px;"><%= link_to "全ての商品を見る>", products_path %></div>
     </div>
   </div>
 </div>
