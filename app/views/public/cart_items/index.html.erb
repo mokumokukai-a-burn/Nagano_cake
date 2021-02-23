@@ -17,9 +17,9 @@
     </tr>
    </thead>
    <thead>
-  <% @cart_items.each do |cart_item| %>
-    <tr>
      <div><% @total = 0 %>
+     <% @cart_items.each do |cart_item| %>
+    <tr>
      <td style="height: 15px"><%= attachment_image_tag @product, :image_id, size: "50x50",  fallback: "cake.jpg" %><%= cart_item.product.name %></td>
      <th class="align-middle"><%= cart_item.product.price %></th>
      <%= form_for cart_item, url: cart_item_path(cart_item) do |f| %>

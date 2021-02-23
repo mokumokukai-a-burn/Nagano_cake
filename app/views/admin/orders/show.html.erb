@@ -61,13 +61,22 @@
         <% end %>
       <% end %>
     </table>
-    <div>
-  <div>商品合計</div>
-  <div>送料</div>
-  <%= @order.shipping_cost %>
-  <div>請求金額合計</div>
-  <%= @order.total_price %>
+    <table class="table table-borderless">
+      <tr>
+        <th>商品合計</th>
+        <td><%= @order.total_price %></td>
+      </tr>
+      <tr>
+        <th>送料</th>
+        <td><%= @order.shipping_cost %></td>
+      </tr>
+      <tr>
+        <th>請求金額合計</th>
+        <td><%= @order.total_price + @order.shipping_cost  %></td>
+      </tr>
+    </table>
   </div>
+</div>
 
  
   
