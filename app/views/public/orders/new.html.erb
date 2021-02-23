@@ -18,12 +18,9 @@
    <label style="margin-left:190px;"><%= f.radio_button :address_a, 1 %> 登録済住所から選択</label><br>
    <div><label style="margin-left: 220px;">
 <%= f.collection_select(:order, @address.all, :id, :full_name )%>
-<!--full_nameはaddressモデルで指定してカラムを連結させて表示。一つのカラムしか表示できないため-->
-
 <br>
 </div>
  <label style="margin-left: 190px;">
-
     <%= f.radio_button :address_a, 2 %> 新しいお届け先</label>
     <div style="display: flex; margin-left:15% ;">
     <div  style="display: flex flex-direction: column;  flex-wrap: wrap;  width: 180px;">
