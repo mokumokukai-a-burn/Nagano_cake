@@ -1,51 +1,3 @@
-<h4>注文履歴詳細</h4>
-<h4>購入者</h4>
-<%= @order.customer.last_name %>
-<%= @order.customer.first_name %>
-<h4>注文日</h4>
-  <%= @order.created_at.strftime("%Y-%m-%d") %>
-<h4>配送先</h4>
-  <%= @order.post_address %>
-  <%= @order.street_address %><br>
-  <%= @order.address %>
-<h4>支払い方法</h4>
-  <%= @order.payment %>
-<%= form_with model:@order, url:"/admin/orders/#{@order.id}", local:true do |f| %>
-<h4>注文ステータス</h4>
-  <%= f.select :status, [["入金待ち", "入金待ち"], ["入金確認", "入金確認"], ["製作中", "製作中"], ["発送準備中", "発送準備中"],["発送済み", "発送済み"]] %>
-<%= f.submit '更新',class: 'btn btn-success' %>
-<% end %>
-<table class="table">
-  <tr>
-    <th>商品名</th>
-    <th>単価（税込）</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th>製作ステータス</th>
-    <th></th>
-  </tr>
-  <% @order.ordered_products.each do |ordered_product| %>
-  <tr>
-    <td><%= ordered_product.product.name %></td>
-    <td><%= a = ordered_product.product.price %></td>
-    <td><%= b = ordered_product.quantity %></td>
-    <td><%= a * b %></td>
-    <td>
-    <%= form_with model: ordered_product, url: admin_ordered_product_path(ordered_product.id), local: true do |f| %>
-      <%= f.select :making_status, {'着手不可':'着手不可', '製作待ち':'製作待ち', '製作中':'製作中', '製作完了':'製作完了'}, { class: 'form-control' , required: true } %>
-      <%= f.submit '更新',class: 'btn btn-success' %>
-    <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
-<div>
-  <div>商品合計</div>
-  <div>送料</div>
-  <%= @order.shipping_cost %>
-  <div>請求金額合計</div>
-  <%= @order.total_price %>
-</div>
 <div class="container">
   <div class="row">
     <div class="col-1"></div>
@@ -70,17 +22,17 @@
             <%= @order.address %>
           </td>
         </tr>
-        <tr>  
+        <tr>
           <th><h4>支払い方法</h4></th>
           <td><%= @order.payment %></td>
         </tr>
-        <tr>  
+        <tr>
           <th><h4>注文ステータス</h4></th>
           <td><%= f.select :status, [["入金待ち", "入金待ち"], ["入金確認", "入金確認"], ["製作中", "製作中"], ["発送準備中", "発送準備中"],["発送済み", "発送済み"]] %></td>
           <td> <%= f.submit '更新',class: 'btn btn-success' %></td>
         </tr>
       </table>
-    <% end %> 
+    <% end %>
   </div>
   <div class="row">
     <table class="table">

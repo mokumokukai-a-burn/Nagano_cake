@@ -15,7 +15,7 @@
     <div class="row">
       <% @products.each do |product| %>
         <div class="col-3">
-          <p><%= attachment_image_tag product, :image_id, size: "220x170",  fallback: "cake.jpg" %></p>
+          <p><%= attachment_image_tag product, :image, size: "220x170",  fallback: "cake.jpg" %></p>
           <p><%= product.name %></p>
           <p><%= product.price %></p>
         </div>
