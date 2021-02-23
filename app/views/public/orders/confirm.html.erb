@@ -19,7 +19,7 @@
         <% @cart_items.each do |cart_item| %>
         <tbody>
           <th height="50">
-            <span><%= attachment_image_tag @product, :image_id, size: "40x40",  fallback: "cake.jpg" %></span>
+            <span><%= attachment_image_tag cart_item.product, :image, size: "40x40",  fallback: "cake.jpg" %></span>
             <span><%= cart_item.product.name %></span>
           </th>
           <td height="50"><%= cart_item.product.price %>円</td>
@@ -73,3 +73,4 @@
   </div>
   <% end %>
 </div>
+
