@@ -1,59 +1,72 @@
-<h4><b>注文履歴詳細</b></h4>
-<div>注文情報</div>
-<table border="1" style="border-collapse: collapse" align="left">
-  <tr>
-    <th>注文日</th>
-    <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
-
-  </tr>
-  <tr>
-    <td>配送先</td>
-    <td>
-      <%= @order.post_address %><br>
-      <%= @order.street_address %><br>
-      <%= @order.address %><br>
-    </td>
-  </tr>
-  <tr>
-    <td>支払い方法</td>
-    <td><%= @order.payment %></td>
-  </tr>
-  <tr>
-    <td>ステータス</td>
-    <td><%= @order.status %></td>
-  </tr>
-</table>
-<div>請求情報</div>
-<table border="1" style="border-collapse: collapse">
-  <tr>
-    <th>商品合計</th>
-    <th><%= @order.total_price %></th>
-  </tr>
-  <tr>
-    <td>配送料</td>
-    <td><%= @order.shipping_cost %></td>
-  </tr>
-  <tr>
-    <td>ご請求額</td>
-    <td><%= @order.total_price + @order.shipping_cost  %></td>
-  </tr>
-</table>
-<div>注文内容</div>
-<table border="1" style="border-collapse: collapse">
-  <tr>
-    <th>商品</th>
-    <th>単価（税込）</th>
-    <th>個数</th>
-    <th>小計</th>
-  </tr>
-  <tr>
-    <td><% @ordered_products.each do |ordered_product| %>
-          <%= ordered_product.product.name %></td>
-          <td><%= ordered_product.product.price %></td>
-          <td><%= ordered_product.quantity %></td>
-          <td><%= ((ordered_product.product.price*1).floor*ordered_product.quantity) %></td>
-        <% end %>
-  </tr>
-</table>
-
-
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <h3 style="margin: 50px 0;">注文履歴詳細</h3>
+  </div>
+  <div class="row">
+    <h5>注文情報</h5>
+    <h5 style="margin-left: 562px;">請求情報</h5>
+  </div>
+  <div class="row">
+    <table border="1" style="border-collapse: collapse" align="left">
+      <tr>
+        <td width="200" height="50" bgcolor="#C0C0C0">注文日</td>
+        <td width="400" height="50"><%= @order.created_at %></td>
+      </tr>
+      <tr>
+        <td width="200" height="50" bgcolor="#C0C0C0">配送先</td>
+        <td width="400" height="50">
+          <span><%= @order.post_address %></span>
+          <span style="padding:0 5px;"><%= @order.street_address %></span>
+          <span><%= @order.address %></span>
+        </td>
+      </tr>
+      <tr>
+        <td width="200" height="50" bgcolor="#C0C0C0">支払い方法</td>
+        <td width="400" height="50"><%= @order.payment %></td>
+      </tr>
+      <tr>
+        <td width="200" height="50" bgcolor="#C0C0C0">ステータス</td>
+        <td width="400" height="50"><%= @order.status %></td>
+      </tr>
+    </table>
+    <div style="margin-left: 40px;">
+      <table border="1" style="border-collapse: collapse">
+        <tr>
+          <td width="100" height="50" bgcolor="#C0C0C0">商品合計</td>
+          <td width="150" height="50"><%= @order.total_price %></td>
+        </tr>
+        <tr>
+          <td width="100" height="50" bgcolor="#C0C0C0">配送料</td>
+          <td><%= @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <td width="100" height="50" bgcolor="#C0C0C0">ご請求額</td>
+          <td><%= @order.total_price + @order.shipping_cost  %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <h5 style="margin: 20px 0;">注文内容</h5>
+  </div>
+  <div class="row">
+    <% @ordered_products.each do |ordered_product| %>
+      <table border="1" style="border-collapse: collapse">
+        <tr>
+          <th width="300" height="50" bgcolor="#C0C0C0">商品</th>
+          <th width="150" height="50" bgcolor="#C0C0C0">単価（税込）</th>
+          <th width="70" height="50" bgcolor="#C0C0C0">個数</th>
+          <th width="90" height="50" bgcolor="#C0C0C0">小計</th>
+        </tr>
+        <tr>
+          <td height="50"><%= ordered_product.product.name %></td>
+          <td height="50"><%= ordered_product.product.price %></td>
+          <td height="50"><%= ordered_product.quantity %></td>
+          <td height="50"><%= ((ordered_product.product.price*1).floor*ordered_product.quantity) %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>
+</div>

@@ -23,8 +23,6 @@ class Public::OrdersController < ApplicationController
     obj[:payment] = obj[:payment].to_i
     @order = Order.new(obj)
     @order.customer_id = current_customer.id
-
-    # p @order
     @order.save
     create_all_ordered_products(@order)
     redirect_to orders_complete_path
@@ -36,8 +34,6 @@ class Public::OrdersController < ApplicationController
     obj = address_params
     obj[:payment] = obj[:payment].to_i
     @order = Order.new(obj)
-
-    # 支払い方法ではenum必要ない。クレカ、銀行払いなどの表示のみ必要
     if params[:order][:address_a] == "0"
       @order.post_address = current_customer.post_number
       @order.street_address = current_customer.street_address

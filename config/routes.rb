@@ -29,13 +29,10 @@ Rails.application.routes.draw do
 
     get '/orders/complete' => 'orders#complete'
     post '/orders/confirm' => 'orders#confirm'
-    # delete '/orders/destroy_all' => 'orders#destroy_all'
     resources :orders, only:[:new,:create,:index,:show]
     resources :products, only:[:index, :show]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
-
     resources :customers, only: [:show, :edit, :update, :unsubscrive, :withdraw]
-#     resources :products
     resources :customers, only: [:show, :edit, :update] do
       member do
         get :unsubscrive

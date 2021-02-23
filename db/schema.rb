@@ -72,13 +72,14 @@ ActiveRecord::Schema.define(version: 2021_02_22_124408) do
     t.integer "product_id"
     t.integer "price"
     t.integer "quantity"
-    t.integer "making_status"
+    t.integer "making_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "payment"
+    t.integer "customer_id"
+    t.integer "payment", default: 0
     t.string "post_address"
     t.string "street_address"
     t.string "address"
