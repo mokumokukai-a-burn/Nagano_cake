@@ -95,18 +95,11 @@
   width: 900px;
 }
 
-.style{
-  sample{
-  font-family: 'Baloo Bhaina', cursive;  /* 使うgoogle fontによって変更 */
-  font-size: 47px;
-  font-weight: bold;
-  color: #fff;  
-  margin: 0px;
-  text-shadow: 3px 3px 0 #99bbe2, 6px 6px 0 #6798d2, 9px 9px 0 #2769b7;
-  -webkit-transform: skewY(-7deg);  /* 傾きを調整 */
-  -ms-transform: skewY(-7deg);
-  -moz-transform: skewY(-7deg);
-  -o-transform: skewY(-7deg);
-  transform: skewY(-7deg);
-}
+.title-logo{
+  display: block;
+	width: 200px;
+	height: 125px;
+	font-size: 0;
+	background-image: url(NaganoCake-logo.jpeg); 
+	background-size: cover;
 }
