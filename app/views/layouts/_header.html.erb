@@ -1,0 +1,35 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#ffffee;">
+    <div class="container">
+      <a class="title-logo navbar-brand" href="/"></a>
+      <span style="text-danger">
+        <% if customer_signed_in? %>
+          <%= current_customer.last_name %>さん こんにちは</span>
+        <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if admin_admin_signed_in? %>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to '商品一覧',admin_products_path, class:'fas nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to '会員一覧',admin_customers_path, class:'fas nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to '注文履歴一覧',admin_orders_path, class:'fas  nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to 'ジャンル一覧',new_admin_genre_path, class:'fas nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to 'ログアウト',destroy_admin_admin_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-black-50' %></button></li>
+          <% elsif customer_signed_in? %>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to 'マイページ',customer_path(current_customer), class:'fas nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to '商品一覧',products_path, class:'fas nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to 'カート',cart_items_path, class:'fas  nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to 'ログアウト',destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-black-50' %></button></li>
+          <% else %>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to 'About',about_path, class:'fas nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to '商品一覧',products_path, class:'fas nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to '新規登録',new_customer_registration_path, class:'fas  nav-link text-black-50' %></button></li>
+            <li style="margin-left: 10px;"><button class="btn btn-outline-success"><%= link_to 'ログイン',new_customer_session_path, class:'fas nav-link text-black-50' %></button></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

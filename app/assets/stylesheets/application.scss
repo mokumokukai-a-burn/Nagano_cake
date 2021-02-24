@@ -1,0 +1,105 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.subtext{
+    font-size: 20px;
+    padding: 100px;
+}
+
+.row-top{
+  background-image: url(cake-1954054_640.1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  width: 70%;
+  height: 50vh;
+  margin: 50px auto;
+}
+
+.row-top2{
+  justify-content: right;
+}
+  
+.items{
+  background-color: red;
+  height: 100px;
+}
+
+.about-title{
+    margin: 30px 0;
+    font-size: 70px;
+}
+
+.about-text{
+    font-size: 20px;
+}
+.col-lg-6-about{
+    margin-bottom: 10px;
+}
+
+.row-about {
+  background-image: url(cupcake-279523_640.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  width: 70%;
+  height: 50vh;
+  margin: 10px auto;
+}
+
+.container-signup {
+  margin: 30px;
+}
+
+.signuptitle{
+  margin: 30px 0;
+}
+
+.row-signuptext{
+  margin: 30px 0;
+}
+
+.row-logintitle{
+  margin: 30px 0;
+}
+
+.row-logintext{
+  margin: 30px 0;
+}
+
+.unsubscrive{
+  height: 600px;
+}
+
+.row-table{
+  width: 800px;
+}
+
+.row-address{
+  width: 900px;
+}
+
+.title-logo{
+  display: block;
+	width: 200px;
+	height: 125px;
+	font-size: 0;
+	background-image: url(NaganoCake-logo.jpeg); 
+	background-size: cover;
+}

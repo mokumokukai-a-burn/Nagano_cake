@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <h1 style="margin: 50px 0;">商品編集</h1>
+  </div>
+   <div class="d-flex justify-content-center">
+    <%= form_for @product,url: {action: "update"} do |f| %>
+      <table class="table-borderless">
+        <tr>
+          <div class="form-group">
+          <th><h4>商品画像</h4></th>
+          <td><%= f.attachment_field :image %></td>
+
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+          <th><h4>商品名</h4></th>
+          <td><%= f.text_field :name, class: "form-control name", placeholder: "商品名"  %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+          <th><h4>商品説明</h4></th>
+          <td><%= f.text_area :opinion, class: "form-control name", placeholder: "ここに説明文を記述します" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+          <th><h4>ジャンル</h4></th>
+          <td><%= f.collection_select :genre_id, Genre.all, :id, :name, {:include_blank => true}, class: "form-control name" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+          <th><h4>税抜き価格</h4></th>
+          <td><%= f.text_field :price, class: "form-control name", placeholder: "1000" %></td>
+          <td><span>円</span></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+          <th><h4>販売ステータス</h4></th>
+          <td><%= f.select :is_active ,[['販売中',true],['販売中止',false]], class: "form-control name" %></td>
+          </div>
+        </tr>
+        <tr>
+          <th></th>
+          <div class="form-group">
+          <td><%= f.submit '投稿', class: "btn btn-success" %></td>
+          </div>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

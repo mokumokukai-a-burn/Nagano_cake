@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+<% genres.each do |genre| %>
+  <td>
+    <%= genre.name %>
+  </td>
+  <td><%= link_to '編集', edit_genre_path(genre.id) %></td>
+<% end %>

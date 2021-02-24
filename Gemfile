@@ -70,5 +70,12 @@ gem 'font-awesome-sass', '~> 5.13'
 
 gem 'jp_prefecture'
 
+
 gem 'kaminari', '~> 0.17.0'
 
+# 2/16追加(DUKA)
+gem 'devise'
+
+# 2/18追加(ネッシー)
+gem 'pry-byebug'
+gem 'jquery-rails'
