@@ -1,20 +1,13 @@
 class Public::ProductsController < ApplicationController
 
   def index
-    @products = Product.all.page(params[:page]).per(8)
-
+    @products = Product.where(is_active: 'true').page(params[:page]).per(8)
+    @product_all = Product.where(is_active: 'true').count
     @product = Product.new
-    @quantity = Product.count
   end
 
   def show
     @product = Product.find(params[:id])
      @cart_item = CartItem.new
   end
-
-  # def create
-  #   product = Product.new
-  #   product.save
-  #   render new
-  # end
 end
