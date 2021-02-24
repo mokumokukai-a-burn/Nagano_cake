@@ -7,4 +7,9 @@ class Customer < ApplicationRecord
   has_many :ordered_products, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 end
+
+
