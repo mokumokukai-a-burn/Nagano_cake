@@ -9,7 +9,7 @@ before_action :authenticate_admin_admin!
   def create
     @product = Product.new(product_params)
     @product.save
-    redirect_to admin_products_path
+    redirect_to admin_product_path(@product)
   end
 
   def edit

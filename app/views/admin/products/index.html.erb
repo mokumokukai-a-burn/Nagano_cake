@@ -22,10 +22,12 @@
         <tr>
           <td><%= product.id %></td>
           <td><%= link_to product.name, admin_product_path(product.id) %></td>
-          <td><%= product.price.to_s(:delimited) %></td>
+
+          <td><%= (product.price/1.1).ceil %></td>
           <td><%= product.genre.name %></td>
           <td>
             <%= product.is_active ? '販売中' : '販売中止' %>
+
           </td>
         </tr>
       </tbody>
