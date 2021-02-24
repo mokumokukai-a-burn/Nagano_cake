@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
     if admin_admin_signed_in?
       admin_root_path            #注文履歴
     elsif customer_signed_in?
-      customer_path(current_customer) #会員詳細
+      "/"
     end
   end
 
   def after_sign_out_path_for(resource)
-    "/"
+      new_admin_admin_session_path
   end
 
   protected

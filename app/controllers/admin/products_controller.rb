@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-
+before_action :authenticate_admin_admin!
   def new
     @product = Product.new
     @genres = Genre.all
@@ -8,9 +8,8 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    # byebug
     @product.save
-    redirect_to admin_products_path
+    redirect_to admin_product_path(@product)
   end
 
   def edit
@@ -29,14 +28,8 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    # obj = product_params
-    # obj[:salesstatus] = obj[:salesstatus].to_i
-    # @order = Order.new(obj)
-    # @customer = Customer.find(params[:id])
     @product = Product.find(params[:id])
-    # byebug
   	@product.update(product_params)
-  # 	redirect_to admin_customer_path(@customer.id)
   	redirect_to admin_products_path
   end
 

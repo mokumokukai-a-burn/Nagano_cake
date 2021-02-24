@@ -1,10 +1,8 @@
 class Public::CartItemsController < ApplicationController
-
-
+  before_action :authenticate_customer!, except: [:index]
   def index
     @cart_items = current_customer.cart_items
     @total = 0
-
   end
 
   def create
