@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-  
+  before_action :authenticate_admin_admin!
   PER=10
   def index
     @orders = Order.all

@@ -1,5 +1,5 @@
 class Public::AddressesController < ApplicationController
-
+  before_action :authenticate_customer!
   def create
     @customer = current_customer
     @address = Address.new(address_params)
