@@ -30,7 +30,7 @@
         <p style="margin-left: 40px;">
           税込価格（税抜き価格）
           <span class="col-1"></span>
-          <%= @product.price %>(<%= @product.price*1 %>)円
+          <%= @product.price %>(<%= (@product.price/1.1).ceil %>)円
         </p>
         <p style="margin-left: 40px;">
           販売ステータス
