@@ -17,9 +17,9 @@
     <tr>
       <td height="75"><%= orders.created_at.strftime("%Y-%m-%d") %></td>
       <td height="75">
-        <%= orders.post_address %>
-        <%= orders.street_address %>
-        <%= orders.address %>
+        <%= orders.post_address %><br>
+        <%= orders.street_address %><br>
+        <%= orders.address %><br>
       </td>
       <td height="75"><%= ordered_product.product.name %></td>
       <td height="75"><%= orders.total_price + orders.shipping_cost  %></td>

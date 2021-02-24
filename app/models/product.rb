@@ -6,7 +6,6 @@ class Product < ApplicationRecord
   attachment :image
   validates :is_active, inclusion: { in: [true, false] }
 
-
   enum payment: {販売中: 0, 販売停止中: 1 }
 
   validates :name, presence: true

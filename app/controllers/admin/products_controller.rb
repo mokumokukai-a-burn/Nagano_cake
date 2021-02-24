@@ -10,7 +10,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params)
     # byebug
     @product.save
-    redirect_to admin_products_path
+    redirect_to admin_product_path(@product)
   end
 
   def edit
