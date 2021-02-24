@@ -28,9 +28,10 @@
           <%= @product.genre.name %>
         </p>
         <p style="margin-left: 40px;">
-          税込価格（税抜き価格）
+          税込価格<br>
+          (税抜き価格）
           <span class="col-1"></span>
-          <%= @product.price %>(<%= @product.price*1 %>)円
+          <%= @product.price.to_s(:delimited) %>(<%= (@product.price*1.1).floor.to_s(:delimited) %>)円
         </p>
         <p style="margin-left: 40px;">
           販売ステータス
