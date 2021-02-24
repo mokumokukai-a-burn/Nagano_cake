@@ -1,4 +1,5 @@
 class Public::ProductsController < ApplicationController
+  before_action :authenticate_customer!, except: [:index, :show]
 
   def index
     @products = Product.where(is_active: 'true').page(params[:page]).per(8)
